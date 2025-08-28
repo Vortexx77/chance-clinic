@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/logo2.png" rel="icon">
+    <title id="site-title">Contact Us - CHANSE CLINIC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E3A8A',
+                        accent: '#3B82F6',
+                        dark: '#0F172A',
+                        green: '#22C55E',
+                        logoGreen: '#22C55E',
+                        logoBlue: '#2563EB'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    gradientColorStops: theme => ({
+                        ...theme('colors'),
+                        'logo': '#22C55E',
+                        'logo-blue': '#2563EB',
+                    })
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #22C55E 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .contact-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+        
+        .contact-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+        }
+        
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .content-bg {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.03) 0%, rgba(34, 197, 94, 0.08) 100%);
+            backdrop-filter: blur(8px);
+        }
+        
+        .card-bg {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+            backdrop-filter: blur(8px);
+        }
+        
+        .section-bg {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.02) 0%, rgba(34, 197, 94, 0.05) 100%);
+        }
+        
+        .map-container {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .map-container:hover::before {
+            opacity: 1;
+        }
+        
+        .submit-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .contact-info {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #22C55E, #2563EB);
+            border-radius: 3px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .contact-card:hover .contact-info::after {
+            opacity: 1;
+            bottom: -5px;
+        }
+        
+        .bg-primary {
+            background-color: #2563EB !important;
+        }
+        
+        .bg-primary\/10 {
+            background-color: rgba(34, 197, 94, 0.1) !important;
+        }
+        
+        .bg-primary\/20 {
+            background-color: rgba(34, 197, 94, 0.2) !important;
+        }
+        
+        .bg-primary\/30 {
+            background-color: rgba(34, 197, 94, 0.3) !important;
+        }
+        
+        .bg-primary\/80 {
+            background-color: rgba(34, 197, 94, 0.8) !important;
+        }
+        
+        .bg-primary\/90 {
+            background-color: rgba(34, 197, 94, 0.9) !important;
+        }
+        
+        .bg-logoGreen {
+            background-color: #22C55E !important;
+        }
+        
+        .text-primary {
+            color: #2563EB !important;
+        }
+        
+        .text-logoGreen {
+            color: #22C55E !important;
+        }
+        
+        .border-primary {
+            border-color: #2563EB !important;
+        }
+        
+        .hover\:bg-primary:hover {
+            background-color: #22C55E !important;
+        }
+        
+        .hover\:text-primary:hover {
+            color: #22C55E !important;
+        }
+        
+        .contact-card:hover {
+            box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.15), 0 1.5px 4px 0 rgba(37, 99, 235, 0.10);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, #22C55E, #2563EB);
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(90deg, #2563EB, #22C55E);
+        }
+        
+        .bg-primary.text-white:hover {
+            background-color: #22C55E !important;
+            color: #fff !important;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-slideIn {
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 1rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+            margin: auto;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0F172A;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6B7280;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #2563EB;
+        }
+        
+        .modal-body {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .modal-footer button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .modal-footer button.cancel {
+            background-color: #F3F4F6;
+            color: #374151;
+        }
+        
+        .modal-footer button.cancel:hover {
+            background-color: #E5E7EB;
+        }
+        
+        .modal-footer button.submit {
+            background-color: #2563EB;
+            color: white;
+        }
+        
+        .modal-footer button.submit:hover {
+            background-color: #1D4ED8;
+        }
+        
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .modal-header h2 {
+                font-size: 1.25rem;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.5rem;
+            }
+            .modal-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-footer button {
+                width: 100%;
+            }
+        }
+
+        /* Universal Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-200deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes flipInX {
+            from {
+                opacity: 0;
+                transform: perspective(400px) rotateX(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(400px) rotateX(0deg);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation Base Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+        }
+
+        /* Specific Animation Classes */
+        .fade-up {
+            transform: translateY(50px);
+        }
+
+        .fade-up.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-left {
+            transform: translateX(-50px);
+        }
+
+        .fade-left.visible {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-right {
+            transform: translateX(50px);
+        }
+
+        .fade-right.visible {
+            animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-scale {
+            transform: scale(0.8);
+        }
+
+        .fade-scale.visible {
+            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-bottom {
+            transform: translateY(100px);
+        }
+
+        .slide-bottom.visible {
+            animation: slideInFromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .bounce-in {
+            transform: scale(0.3);
+        }
+
+        .bounce-in.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .rotate-in {
+            transform: rotate(-200deg);
+        }
+
+        .rotate-in.visible {
+            animation: rotateIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .flip-x {
+            transform: perspective(400px) rotateX(90deg);
+        }
+
+        .flip-x.visible {
+            animation: flipInX 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .zoom-in {
+            transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        .zoom-in.visible {
+            animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-top {
+            transform: translateY(-100px);
+        }
+
+        .slide-top.visible {
+            animation: slideInFromTop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Staggered Animation Delays */
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-700 { animation-delay: 0.7s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+
+        /* Enhanced Contact Cards Animation */
+        .contact-card-animate {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .contact-card-animate.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Form Animation */
+        .form-animate {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .form-animate.visible {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Map Animation */
+        .map-animate {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .map-animate.visible {
+            animation: fadeInScale 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Footer Animations */
+        .footer-section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .footer-section-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Section Title Animations */
+        .section-title-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .section-subtitle-animate {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-subtitle-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Page Header Animation */
+        .page-header-content {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .page-header-content.visible {
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Contact Info Cards Animation */
+        .contact-info-animate {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-info-animate.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Animation for Important Elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+    <style>
+        /* WhatsApp and Back-to-Top Buttons */
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button,
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .back-to-top {
+            background-color: #4ade80;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .whatsapp-button:hover,
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
+                        <div class="hidden lg:block">
+                                <span class="text-2xl font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                            </div>                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-3 ml-4 lg:ml-20">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">About</a>
+                    <a href="services.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Services</a>
+                    <a href="doctors.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Doctors</a>
+                    <a href="contact.html" class="text-primary font-medium text-sm lg:text-base">Contact</a>
+                    <a class="bg-primary text-white px-3 lg:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl book-appointment text-sm lg:text-base whitespace-nowrap" onclick="openAppointmentModal(); return false;">Book Appointment</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/40 hidden">
+            <div class="bg-white w-4/5 max-w-xs h-full shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col space-y-4 sm:space-y-6 absolute right-0 top-0 animate-slideIn">
+                <div>
+                    <div>
+                        <a href="index.html" class="flex items-center">
+                            <img src="img/logo2.png" alt="Clinic Logo" class="h-10 sm:h-12 w-auto mr-2" />
+                            <span class="text-base sm:text-lg font-bold text-primary">CHANSE CLINIC</span>
+                        </a>
+                        <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-400 hover:text-logoGreen text-2xl focus:outline-none">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <nav class="flex flex-col gap-3 sm:gap-4 mt-4">
+                            <a href="index.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Home</a>
+                            <a href="services.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Services</a>
+                            <a href="doctors.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Doctors</a>
+                            <a href="about.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">About</a>
+                            <a href="contact.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Contact</a>
+                        </nav>
+                        <a class="bg-primary text-white px-4 sm:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl mt-4 book-appointment text-sm sm:text-base block text-center">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-20 hero-pattern">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center page-header-content animate-on-scroll fade-up">
+                <h1 class="text-5xl font-bold mb-6">Get in <span class="gradient-text">Touch</span></h1>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">We're here to help. Contact us for any questions or to schedule an appointment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="contact-card contact-info-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-100">
+                    <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                        <i class="fas fa-map-marker-alt text-logoGreen text-2xl"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3 class="text-xl font-bold mb-4">Our Location</h3>
+                        <p class="text-gray-600" id="dynamic-address">Entebbe Kampala - Entebbe Road, Namulanda<br>Next to Kisubi Schools</p>
+                    </div>
+                </div>
+                <div class="contact-card contact-info-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-200">
+                    <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                        <i class="fas fa-phone-alt text-logoGreen text-2xl"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3 class="text-xl font-bold mb-4">Contact Numbers</h3>
+                        <p class="text-gray-600" id="dynamic-phone">Main: (+256) 759130250<br>Emergency: 0759130250<br>Appointments: (+256) 759130250</p>
+                    </div>
+                </div>
+                <div class="contact-card contact-info-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-300">
+                    <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                        <i class="fas fa-clock text-logoGreen text-2xl"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3 class="text-xl font-bold mb-4">Working Hours</h3>
+                        <p class="text-gray-600" id="dynamic-business-hours">Monday - Sunday: 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form and Map -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="form-animate animate-on-scroll fade-left">
+                    <h2 class="text-3xl font-bold mb-6 section-title-animate animate-on-scroll fade-up">Send us a <span class="gradient-text">Message</span></h2>
+                    <form id="contact-form" class="space-y-6">
+                        <input type="hidden" name="csrf_token" id="csrf_token" value="">
+
+                        <!-- Honeypot Fields (Hidden from users, visible to bots) -->
+                        <div class="honeypot-fields" style="display: none !important; position: absolute !important; left: -9999px !important;">
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                            <input type="email" name="email_confirm" id="email_confirm" tabindex="-1" autocomplete="off">
+                            <input type="text" name="phone_confirm" id="phone_confirm" tabindex="-1" autocomplete="off">
+                            <input type="text" name="timestamp" id="timestamp" value="">
+                        </div>
+
+                        <!-- Time-based protection -->
+                        <input type="hidden" name="form_load_time" id="form_load_time" value="">
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">First Name</label>
+                                <input type="text" name="firstName" class="form-input w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Put your first name here">
+                                <span class="error-message text-red-500 text-sm hidden"></span>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Last Name</label>
+                                <input type="text" name="lastName" class="form-input w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Put your last name here">
+                                <span class="error-message text-red-500 text-sm hidden"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" name="email" class="form-input w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="john@example.com">
+                            <span class="error-message text-red-500 text-sm hidden"></span>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" name="phone" class="form-input w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" placeholder="(+256) 702133329">
+                            <span class="error-message text-red-500 text-sm hidden"></span>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea name="message" class="form-input w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none h-32" placeholder="How can we help you?"></textarea>
+                            <span class="error-message text-red-500 text-sm hidden"></span>
+                        </div>
+                        <button type="submit" class="submit-btn w-full bg-primary text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl">
+                Send Message
+            </button>
+                    </form>
+                </div>
+                <div class="animate-on-scroll fade-right">
+                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll bounce-in animate-delay-100">
+                        <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                            <i class="fas fa-clock text-logoGreen text-2xl"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-bold mb-4">Working Hours</h3>
+                            <p class="text-gray-600" id="dynamic-business-hours">Monday - Sunday: 24/7</p>
+                        </div>
+                    </div>
+                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll bounce-in animate-delay-200">
+                        <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                            <i class="fas fa-map-marker-alt text-logoGreen text-2xl"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-bold mb-4">Address</h3>
+                            <p class="text-gray-600" id="dynamic-address">Entebbe Kampala - Entebbe Road, Namulanda</p>
+                        </div>
+                    </div>
+                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll bounce-in animate-delay-300">
+                        <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                            <i class="fas fa-phone text-logoGreen text-2xl"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-bold mb-4">Phone</h3>
+                            <p class="text-gray-600" id="dynamic-phone">+1 (+256) 759130250</p>
+                        </div>
+                    </div>
+                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll bounce-in animate-delay-400">
+                        <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
+                            <i class="fas fa-envelope text-logoGreen text-2xl"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h3 class="text-xl font-bold mb-4">Email</h3>
+                            <p class="text-gray-600" id="dynamic-contact-email">chansehospitals@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 section-title-animate animate-on-scroll fade-up">Find Us on the <span class="gradient-text">Map</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">Visit our clinic located along Entebbe Kampala - Entebbe Road, Namulanda next to Kisubi Schools. We're easily accessible and provide ample parking for our patients.</p>
+            </div>
+            <div class="map-container map-animate animate-on-scroll fade-scale">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8037829358536!2d32.54382857507038!3d0.15466949984382872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa402688c78fa48cf%3A0x8208d3af97c16221!2sCHANSE%20PHYSICIAN%20AND%20CHILDREN&#39;S%20CLINIC!5e0!3m2!1sen!2sug!4v1750792611951!5m2!1sen!2sug"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="mt-8 text-center animate-on-scroll fade-up animate-delay-300">
+                <a href="https://maps.app.goo.gl/9ygGopYiGL4zXpTZ7" target="_blank" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-xl hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl pulse-animation">
+                    <i class="fas fa-directions mr-2"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-100">
+                    <div class="flex items-center mb-6">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-32 w-auto mr-30 bg-white rounded-lg p-1" />
+                        <span class="text-2xl font-bold ml-1">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                    </div>
+                    <p class="text-gray-400">Providing quality healthcare services with compassion and excellence.</p>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-200">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="doctors.html" class="text-gray-400 hover:text-white transition duration-300">Doctors</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-300">
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Physician</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Labaratory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pediatric</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">General Medicine</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-400">
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates and health tips.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" name="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none bg-gray-800 text-white placeholder-gray-400" required>
+                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div id="newsletter-message" class="mt-2 text-sm hidden"></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 animate-on-scroll fade-up animate-delay-500">
+                <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+256759130250" target="_blank" class="whatsapp-button" title="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="back-to-top" title="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Appointment Form Modal -->
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book an Appointment</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service_type" class="form-control">
+                            <option value="">Select a service</option>
+                            <option value="General Consultation">Cardiology</option>
+                            <option value="Pediatric Care">Pediatrics</option>
+                            <option value="Emergency Care">Emergency Care</option>
+                            <option value="Vaccination">Immunization</option>
+                            <option value="Laboratory Tests">Laboratory</option>
+                            <option value="Prenatal Care">General Medicine</option>
+                            <option value="Family Planning">Maternity</option>
+                            <option value="Chronic Disease Management">Gynacology</option>
+                        </select>
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel">Cancel</button>
+                <button class="submit">Book Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="success-notification" class="fixed top-4 right-4 bg-green-600 text-white px-8 py-4 rounded-xl shadow-2xl transform translate-x-full transition-transform duration-300 z-50 border-l-4 border-green-400 opacity-0 pointer-events-none">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-3 text-green-200" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <div>
+                <div class="font-semibold text-lg">Success!</div>
+                <span id="success-message" class="text-green-100">Message sent successfully!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Notification -->
+    <div id="error-notification" class="fixed top-4 right-4 bg-red-600 text-white px-8 py-4 rounded-xl shadow-2xl transform translate-x-full transition-transform duration-300 z-50 border-l-4 border-red-400 opacity-0 pointer-events-none">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-3 text-red-200" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+            </svg>
+            <div>
+                <div class="font-semibold text-lg">Error!</div>
+                <span id="error-message" class="text-red-100">An error occurred. Please try again.</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Add CSS to ensure notifications are hidden by default
+        const notificationStyles = document.createElement('style');
+        notificationStyles.textContent = `
+            #success-notification, #error-notification {
+                transform: translateX(100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease-in-out;
+            }
+            #success-notification.show, #error-notification.show {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+        `;
+        document.head.appendChild(notificationStyles);
+
+        // --- GLOBAL MODAL FUNCTIONS ---
+        function openAppointmentModal() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            if (appointmentModal) {
+                appointmentModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeAppointmentModal() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            const appointmentForm = document.getElementById('appointment-form');
+            if (appointmentModal) {
+                appointmentModal.classList.remove('active');
+                document.body.style.overflow = '';
+                if (appointmentForm) {
+                    appointmentForm.reset();
+                    $(appointmentForm).find('.error-message').text('').removeClass('visible');
+                    $(appointmentForm).find('input, select').removeClass('error');
+                }
+            }
+        }
+
+        // --- GLOBAL NOTIFICATION FUNCTION ---
+        function showNotification(type, message) {
+            $('.notification').remove();
+            const notification = $(`
+                <div class="notification ${type}" style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    border-radius: 5px;
+                    color: white;
+                    font-weight: 500;
+                    z-index: 10000;
+                    max-width: 400px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    ${type === 'success' ? 'background-color: #10b981;' : ''}
+                    ${type === 'error' ? 'background-color: #ef4444;' : ''}
+                    ${type === 'info' ? 'background-color: #3b82f6;' : ''}
+                ">
+                    ${message}
+                </div>
+            `);
+
+            $('body').append(notification);
+
+            setTimeout(() => {
+                notification.fadeOut(300, function() {
+                    $(this).remove();
+                });
+            }, 5000);
+        }
+
+        // --- GLOBAL HELPER FUNCTIONS ---
+        function generateCSRFToken() {
+            return fetch('backend/routes/csrf.php?form_id=contact_form&expiry=30')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.token) {
+                        $('#csrf_token').val(data.token);
+                        return data.token;
+                    }
+                    throw new Error('No token received');
+                })
+                .catch(error => {
+                    console.error('Error generating CSRF token:', error);
+                    throw error;
+                });
+        }
+
+        function initializeSpamProtection() {
+            const formLoadTime = Date.now();
+            $('#form_load_time').val(formLoadTime);
+            $('#timestamp').val(formLoadTime);
+        }
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        $(document).ready(function() {
+            // Generate CSRF token
+            generateCSRFToken();
+            // Initialize spam protection
+            initializeSpamProtection();
+
+            // --- MODAL LOGIC ---
+            const appointmentModal = document.getElementById('appointment-modal');
+            const modalClose = appointmentModal.querySelector('.modal-close');
+            const cancelBtn = appointmentModal.querySelector('.cancel');
+            const bookAppointmentBtns = document.querySelectorAll('.book-appointment');
+            bookAppointmentBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openAppointmentModal();
+                });
+            });
+            modalClose.addEventListener('click', closeAppointmentModal);
+            cancelBtn.addEventListener('click', closeAppointmentModal);
+            appointmentModal.addEventListener('click', e => {
+                if (e.target === appointmentModal) closeAppointmentModal();
+            });
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && appointmentModal.classList.contains('active')) {
+                    closeAppointmentModal();
+                }
+            });
+
+            // --- APPOINTMENT FORM VALIDATION ---
+            const appointmentFormJQ = $('#appointment-form');
+            const submitBtnJQ = $('.submit');
+            const validationRules = {
+                name: {
+                    required: true,
+                    minlength: 2,
+                    message: 'Please enter your full name'
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    message: 'Please enter a valid email address'
+                },
+                phone: {
+                    required: true,
+                    pattern: /^[0-9+\-\s()]{10,}$/,
+                    message: 'Please enter a valid phone number'
+                },
+                date: {
+                    required: true,
+                    message: 'Please select a preferred date'
+                },
+                time: {
+                    required: true,
+                    message: 'Please select a preferred time'
+                },
+                service_type: {
+                    required: true,
+                    message: 'Please select a service'
+                },
+                service: {
+                    required: true,
+                    message: 'Please select a service'
+                },
+                notes: {
+                    required: false,
+                    message: 'Additional notes are optional'
+                }
+            };
+            appointmentFormJQ.find('input, select, textarea').on('blur', function() {
+                validateField($(this));
+            });
+
+            function validateField(field) {
+                const fieldName = field.attr('name');
+                const fieldValue = field.val();
+                const rules = validationRules[fieldName];
+                const errorElement = field.siblings('.error-message');
+                field.removeClass('error');
+                errorElement.removeClass('visible').text('');
+                if (!rules) return true;
+                if (rules.required && !fieldValue) {
+                    showError(field, errorElement, rules.message);
+                    return false;
+                }
+                if (fieldValue) {
+                    if (rules.email && !isValidEmail(fieldValue)) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    if (rules.pattern && !rules.pattern.test(fieldValue)) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    if (rules.minlength && fieldValue.length < rules.minlength) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function showError(field, errorElement, message) {
+                field.addClass('error');
+                errorElement.text(message).addClass('visible');
+            }
+
+            submitBtnJQ.on('click', function(e) {
+                e.preventDefault();
+
+                // Debug: Check what fields are found
+                console.log('Form fields found:');
+                appointmentFormJQ.find('input, select, textarea').each(function() {
+                    const field = $(this);
+                    console.log('Field:', field.attr('name'), 'Value:', field.val());
+                });
+
+                let isValid = true;
+                appointmentFormJQ.find('input, select, textarea').each(function() {
+                    if (!validateField($(this))) {
+                        isValid = false;
+                    }
+                });
+                if (isValid) {
+                    submitBtnJQ.prop('disabled', true).text('Booking...');
+                    const formData = {
+                        name: appointmentFormJQ.find('[name="name"]').val(),
+                        email: appointmentFormJQ.find('[name="email"]').val(),
+                        phone: appointmentFormJQ.find('[name="phone"]').val(),
+                        date: appointmentFormJQ.find('[name="date"]').val(),
+                        time: appointmentFormJQ.find('[name="time"]').val(),
+                        service_type: appointmentFormJQ.find('[name="service"]').val() || 'General Consultation',
+                        notes: '' // No notes field in the form, so set to empty string
+                    };
+
+                    // Debug: Log the form data
+                    console.log('Form data being sent:', formData);
+                    console.log('JSON string:', JSON.stringify(formData));
+
+                    fetch('backend/routes/appointment.php?action=book', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                showNotification('success', data.message || 'Appointment booked successfully!');
+                                closeAppointmentModal();
+                                appointmentFormJQ[0].reset();
+                            } else {
+                                showNotification('error', data.message || 'Failed to book appointment. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            showNotification('error', 'Network error. Please check your connection and try again.');
+                        })
+                        .finally(() => {
+                            submitBtnJQ.prop('disabled', false).text('Book Appointment');
+                        });
+                }
+            });
+
+            // --- NEWSLETTER FORM ---
+            $('#newsletter-form').on('submit', function(e) {
+                e.preventDefault();
+                const emailField = $(this).find('input[name="email"]');
+                const messageDiv = $('#newsletter-message');
+                const email = emailField.val().trim();
+
+                messageDiv.removeClass('text-green-500 text-red-500').addClass('hidden');
+
+                if (!isValidEmail(email)) {
+                    messageDiv.text('Please enter a valid email address').removeClass('hidden').addClass('text-red-500');
+                    return false;
+                }
+
+                const submitBtn = $(this).find('button[type="submit"]');
+                const originalText = submitBtn.html();
+                submitBtn.html('<i class="fas fa-spinner fa-spin"></i>').prop('disabled', true);
+
+                fetch('backend/routes/newsletter.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            action: 'subscribe',
+                            email: email,
+                            source: 'website'
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            messageDiv.text(data.message).removeClass('hidden').addClass('text-green-500');
+                            this.reset();
+                        } else {
+                            messageDiv.text(data.message).removeClass('hidden').addClass('text-red-500');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Newsletter subscription error:', error);
+                        messageDiv.text('An error occurred. Please try again.').removeClass('hidden').addClass('text-red-500');
+                    })
+                    .finally(() => {
+                        submitBtn.html(originalText).prop('disabled', false);
+                    });
+            });
+
+            // --- CONTACT FORM ---
+            $('#contact-form').on('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                $(this).find('input:not([name="csrf_token"]):not([name="website"]):not([name="email_confirm"]):not([name="phone_confirm"]):not([name="timestamp"]):not([name="form_load_time"]), textarea').each(function() {
+                    if (!validateContactField($(this))) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    const csrfToken = $('#csrf_token').val();
+                    if (!csrfToken) {
+                        generateCSRFToken().then(() => {
+                            $('#contact-form').submit();
+                        }).catch(error => {
+                            console.error('Failed to generate CSRF token:', error);
+                            showNotification('error', 'Security token error. Please refresh the page.');
+                        });
+                        return;
+                    }
+
+                    const submitBtn = $(this).find('button[type="submit"]');
+                    const originalText = submitBtn.text();
+                    submitBtn.text('Sending...').prop('disabled', true);
+
+                    const formData = {
+                        name: $(this).find('[name="firstName"]').val() + ' ' + $(this).find('[name="lastName"]').val(),
+                        email: $(this).find('[name="email"]').val(),
+                        phone: $(this).find('[name="phone"]').val(),
+                        subject: 'Contact Form Submission',
+                        message: $(this).find('[name="message"]').val()
+                    };
+
+                    fetch('backend/routes/contact.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.text())
+                        .then(text => {
+                            try {
+                                const data = JSON.parse(text);
+                                if (data.success) {
+                                    showNotification('success', data.message);
+                                    this.reset();
+                                    $(this).find('.error').removeClass('error');
+                                    $(this).find('.error-message').text('').removeClass('visible');
+                                    initializeSpamProtection();
+                                    generateCSRFToken();
+                                } else {
+                                    if (data.errors) {
+                                        Object.keys(data.errors).forEach(field => {
+                                            const fieldElement = $(this).find(`[name="${field}"]`);
+                                            const errorElement = fieldElement.siblings('.error-message');
+                                            showError(fieldElement, errorElement, data.errors[field]);
+                                        });
+                                    } else {
+                                        showNotification('error', data.message);
+                                    }
+                                }
+                            } catch (parseError) {
+                                console.error('JSON parse error:', parseError);
+                                showNotification('error', 'Invalid response from server');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Fetch error:', error);
+                            showNotification('error', 'An error occurred. Please try again.');
+                        })
+                        .finally(() => {
+                            submitBtn.text(originalText).prop('disabled', false);
+                        });
+                }
+            });
+
+            function validateContactField(field) {
+                const fieldName = field.attr('name');
+                const fieldValue = field.val();
+                const errorElement = field.siblings('.error-message');
+
+                field.removeClass('error');
+                errorElement.removeClass('visible').text('');
+
+                if (fieldName === 'firstName' || fieldName === 'lastName') {
+                    if (!fieldValue || fieldValue.length < 2) {
+                        showError(field, errorElement, 'Please enter a valid name');
+                        return false;
+                    }
+                } else if (fieldName === 'email') {
+                    if (!fieldValue || !isValidEmail(fieldValue)) {
+                        showError(field, errorElement, 'Please enter a valid email address');
+                        return false;
+                    }
+                } else if (fieldName === 'phone') {
+                    if (!fieldValue || fieldValue.length < 10) {
+                        showError(field, errorElement, 'Please enter a valid phone number');
+                        return false;
+                    }
+                } else if (fieldName === 'message') {
+                    if (!fieldValue || fieldValue.length < 10) {
+                        showError(field, errorElement, 'Please enter a message (minimum 10 characters)');
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            // --- MOBILE MENU ---
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+            function openMobileMenu() {
+                mobileMenu.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeMobileMenu() {
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+            mobileMenuToggle.addEventListener('click', openMobileMenu);
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+            mobileMenu.addEventListener('click', e => {
+                if (e.target === mobileMenu) closeMobileMenu();
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeMobileMenu();
+            });
+
+            // --- BACK TO TOP ---
+            const backToTopButton = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Fetch and inject dynamic site settings
+            fetch('backend/routes/settings.php')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && data.settings) {
+                        const s = data.settings;
+                        if (s.site_name) {
+                            document.getElementById('site-title').textContent = 'Contact Us - ' + s.site_name;
+                        }
+                        if (s.address) {
+                            document.getElementById('dynamic-address').innerHTML = s.address.replace(/\n/g, '<br>');
+                        }
+                        if (s.phone_number) {
+                            document.getElementById('dynamic-phone').textContent = s.phone_number;
+                        }
+                        if (s.contact_email) {
+                            document.getElementById('dynamic-contact-email').textContent = s.contact_email;
+                        }
+                        if (s.business_hours) {
+                            document.getElementById('dynamic-business-hours').innerHTML = s.business_hours.replace(/\n/g, '<br>');
+                        }
+                    }
+                });
+
+            // --- SCROLL ANIMATIONS ---
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Don't unobserve to allow re-triggering if needed
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animation classes
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize animations for elements already in viewport
+            const initializeVisibleAnimations = () => {
+                animatedElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        el.classList.add('visible');
+                    }
+                });
+            };
+
+            // Run on page load
+            initializeVisibleAnimations();
+
+            // Also run after a short delay to catch any dynamically loaded content
+            setTimeout(initializeVisibleAnimations, 100);
+        });
+    </script>
+</body>
+
+</html>

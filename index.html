@@ -1,0 +1,2892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/logo2.png" rel="icon">
+    <title id="site-title">CHANSE CLINIC - Your Health, Our Priority</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E3A8A',
+                        accent: '#3B82F6',
+                        dark: '#0F172A',
+                        green: '#22C55E',
+                        logoGreen: '#22C55E',
+                        logoBlue: '#2563EB'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    gradientColorStops: theme => ({
+                        ...theme('colors'),
+                        'logo': '#22C55E',
+                        'logo-blue': '#2563EB',
+                    })
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .content-bg {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.03) 0%, rgba(34, 197, 94, 0.08) 100%);
+            backdrop-filter: blur(8px);
+        }
+        
+        .card-bg {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+            backdrop-filter: blur(8px);
+        }
+        
+        .section-bg {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.02) 0%, rgba(34, 197, 94, 0.05) 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #22C55E 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+        
+        .carousel-item {
+            flex: 0 0 100%;
+            position: relative;
+            opacity: 0.7;
+            transition: opacity 0.8s ease;
+        }
+        
+        .carousel-item.active {
+            opacity: 1;
+        }
+        
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            opacity: 0.8;
+            font-size: 18px;
+        }
+        
+        .carousel-control:hover {
+            background: rgba(34, 197, 94, 0.9);
+            border-color: rgba(34, 197, 94, 1);
+            transform: translateY(-50%) scale(1.1);
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+        }
+        
+        .carousel-control:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .carousel-prev {
+            left: 30px;
+        }
+        
+        .carousel-next {
+            right: 30px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .carousel-indicator:hover {
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.2);
+        }
+        
+        .carousel-indicator.active {
+            background: #22C55E;
+            transform: scale(1.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+        }
+        
+        .carousel-indicator.active::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        /* Carousel content animations */
+        .carousel-content {
+            position: relative;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition-delay: 0.2s;
+        }
+        
+        .carousel-item.active .carousel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .carousel-control {
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+            }
+            
+            .carousel-prev {
+                left: 15px;
+            }
+            
+            .carousel-next {
+                right: 15px;
+            }
+            
+            .carousel-indicators {
+                bottom: 20px;
+                gap: 8px;
+            }
+            
+            .carousel-indicator {
+                width: 10px;
+                height: 10px;
+            }
+        }
+        
+        /* Smooth loading animation */
+        .carousel-item img {
+            transition: transform 0.8s ease;
+        }
+        
+        .carousel-item.active img {
+            transform: scale(1.05);
+        }
+        
+        /* Progress bar for auto-advance */
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #22C55E 0%, #2563EB 100%);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 5s linear;
+            z-index: 10;
+        }
+        
+        .carousel-progress.active {
+            transform: scaleX(1);
+        }
+        
+        .bg-primary {
+            background-color: #2563EB !important;
+        }
+        
+        .bg-primary\/10 {
+            background-color: rgba(34, 197, 94, 0.1) !important;
+        }
+        
+        .bg-primary\/20 {
+            background-color: rgba(34, 197, 94, 0.2) !important;
+        }
+        
+        .bg-primary\/30 {
+            background-color: rgba(34, 197, 94, 0.3) !important;
+        }
+        
+        .bg-primary\/80 {
+            background-color: rgba(34, 197, 94, 0.8) !important;
+        }
+        
+        .bg-primary\/90 {
+            background-color: rgba(34, 197, 94, 0.9) !important;
+        }
+        
+        .bg-logoGreen {
+            background-color: #22C55E !important;
+        }
+        
+        .text-primary {
+            color: #2563EB !important;
+        }
+        
+        .text-logoGreen {
+            color: #22C55E !important;
+        }
+        
+        .border-primary {
+            border-color: #2563EB !important;
+        }
+        
+        .hover\:bg-primary:hover {
+            background-color: #22C55E !important;
+        }
+        
+        .hover\:text-primary:hover {
+            color: #22C55E !important;
+        }
+        
+        .card-hover:hover {
+            box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.15), 0 1.5px 4px 0 rgba(37, 99, 235, 0.10);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #22C55E10 0%, #2563EB10 100%);
+        }
+        
+        .bg-primary.text-white:hover {
+            background-color: #22C55E !important;
+            color: #fff !important;
+        }
+        
+        .stat-card {
+            border: 1.5px solid #22C55E;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-slideIn {
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .why-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        
+        .why-animate.visible {
+            animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .why-card {
+            transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, #fff 80%, #e0fbe6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-8px) scale(1.04) rotate(-1deg);
+            box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.18), 0 1.5px 4px 0 rgba(37, 99, 235, 0.10);
+            border: 2px solid #22C55E;
+            background: linear-gradient(135deg, #e0fbe6 0%, #fff 100%);
+        }
+        
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #22C55E33 0%, #2563EB22 100%);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        
+        .why-card:hover::before {
+            opacity: 0.8;
+        }
+        
+        @keyframes fadeInUpTestimonial {
+            from {
+                opacity: 0;
+                transform: translateY(60px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .testimonial-animate {
+            opacity: 0;
+            transform: translateY(60px) scale(0.96);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        
+        .testimonial-animate.visible {
+            animation: fadeInUpTestimonial 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Universal Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-200deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes flipInX {
+            from {
+                opacity: 0;
+                transform: perspective(400px) rotateX(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(400px) rotateX(0deg);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation Base Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+        }
+
+        /* Specific Animation Classes */
+        .fade-up {
+            transform: translateY(50px);
+        }
+
+        .fade-up.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-left {
+            transform: translateX(-50px);
+        }
+
+        .fade-left.visible {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-right {
+            transform: translateX(50px);
+        }
+
+        .fade-right.visible {
+            animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-scale {
+            transform: scale(0.8);
+        }
+
+        .fade-scale.visible {
+            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-bottom {
+            transform: translateY(100px);
+        }
+
+        .slide-bottom.visible {
+            animation: slideInFromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .bounce-in {
+            transform: scale(0.3);
+        }
+
+        .bounce-in.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .rotate-in {
+            transform: rotate(-200deg);
+        }
+
+        .rotate-in.visible {
+            animation: rotateIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .flip-x {
+            transform: perspective(400px) rotateX(90deg);
+        }
+
+        .flip-x.visible {
+            animation: flipInX 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .zoom-in {
+            transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        .zoom-in.visible {
+            animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-top {
+            transform: translateY(-100px);
+        }
+
+        .slide-top.visible {
+            animation: slideInFromTop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Staggered Animation Delays */
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-700 { animation-delay: 0.7s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+
+        /* Hero Section Specific Animations */
+        .hero-content {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-content.visible {
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .hero-image {
+            opacity: 0;
+            transform: translateX(50px) scale(0.9);
+        }
+
+        .hero-image.visible {
+            animation: fadeInRight 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .stat-card-animate {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .stat-card-animate.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Services Section Animations */
+        .service-card {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Emergency Section Animations */
+        .emergency-content {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .emergency-content.visible {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .emergency-image {
+            opacity: 0;
+            transform: translateX(50px) scale(0.9);
+        }
+
+        .emergency-image.visible {
+            animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* News Section Animations */
+        .news-card {
+            opacity: 0;
+            transform: translateY(50px) rotateY(10deg);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .news-card.visible {
+            opacity: 1;
+            transform: translateY(0) rotateY(0deg);
+        }
+
+        /* Footer Animations */
+        .footer-section {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .footer-section.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Section Title Animations */
+        .section-title {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .section-subtitle {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-subtitle.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Animation for Important Elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .testimonial-card {
+            transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+            border: 2px solid transparent;
+            background: linear-gradient(135deg, #fff 80%, #e0fbe6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px) scale(1.04) rotate(1deg);
+            box-shadow: 0 8px 32px 0 rgba(37, 99, 235, 0.13), 0 1.5px 4px 0 rgba(34, 197, 94, 0.10);
+            border: 2px solid #2563EB;
+            background: linear-gradient(135deg, #e0fbe6 0%, #fff 100%);
+        }
+        
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563EB33 0%, #22C55E22 100%);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        
+        .testimonial-card:hover::before {
+            opacity: 0.8;
+        }
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 1rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+            margin: auto;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .modal-header h2 {
+                font-size: 1.25rem;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.5rem;
+            }
+            .modal-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-footer button {
+                width: 100%;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0F172A;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6B7280;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #2563EB;
+        }
+        
+        .modal-body {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .modal-footer button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .modal-footer button.cancel {
+            background-color: #F3F4F6;
+            color: #374151;
+        }
+        
+        .modal-footer button.cancel:hover {
+            background-color: #E5E7EB;
+        }
+        
+        .modal-footer button.submit {
+            background-color: #2563EB;
+            color: white;
+        }
+        
+        .modal-footer button.submit:hover {
+            background-color: #1D4ED8;
+        }
+        /* Testimonials Carousel Styles */
+        
+        .testimonials-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-slide {
+            flex-shrink: 0;
+            padding: 0 1rem;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .carousel-nav:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .carousel-nav.prev {
+            left: 1rem;
+        }
+        
+        .carousel-nav.next {
+            right: 1rem;
+        }
+        
+        .carousel-dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background: #2563EB;
+            width: 2rem;
+            border-radius: 0.375rem;
+        }
+        
+        .carousel-dot:hover {
+            background: rgba(37, 99, 235, 0.6);
+        }
+        /* Responsive adjustments */
+        
+        @media (max-width: 768px) {
+            .carousel-slide {
+                width: 100%;
+                padding: 0 0.5rem;
+            }
+            .carousel-nav {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            .carousel-nav.prev {
+                left: 0.5rem;
+            }
+            .carousel-nav.next {
+                right: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .carousel-slide {
+                padding: 0 0.25rem;
+            }
+        }
+    </style>
+    <style>
+        /* WhatsApp and Back-to-Top Buttons */
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button,
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .back-to-top {
+            background-color: #4ade80;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .whatsapp-button:hover,
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-gray-50">
+    <div class="">
+        <!-- Navigation -->
+        <nav id="navbar" class="navbar fixed w-full z-50 text-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex items-center">
+                        <a href="index.html" class="flex items-center">
+                            <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
+                            <div class="flex flex-col">
+                                <div class="hidden lg:block">
+                                    <span class="text-2xl font-bold">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                                </div>
+                                <div class="lg:hidden">
+                                    <span class="text-sm sm:text-base md:text-lg font-bold">CHANSE PHYSICIAN & CHILDREN'S</span>
+                                    <span class="text-sm sm:text-base md:text-lg font-bold  block text-center">CLINIC</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-2 lg:space-x-3 ml-4 lg:ml-20">
+                        <a href="index.html" class="hover:text-primary font-medium text-sm lg:text-base">Home</a>
+                        <a href="about.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">About</a>
+                        <a href="services.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Services</a>
+                        <a href="doctors.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Doctors</a>
+                        <a href="contact.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Contact</a>
+                        <a class="bg-primary  px-3 lg:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl book-appointment text-sm lg:text-base whitespace-nowrap">Book Appointment</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-toggle" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/40 hidden">
+                <div class="bg-white w-[75%] sm:w-[60%] h-full shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col space-y-4 sm:space-y-6 absolute right-0 top-0 animate-slideIn">
+                    <div>
+                        <div>
+                            <a href="index.html" class="flex items-center">
+                                <img src="img/logo2.png" alt="Clinic Logo" class="h-10 sm:h-12 w-auto mr-2" />
+                                <span class="text-base sm:text-lg font-bold text-primary">CHANSE CLINIC</span>
+                            </a>
+                            <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-400 hover:text-logoGreen text-2xl focus:outline-none">
+                            <i class="fas fa-times"></i>
+                        </button>
+                            <nav class="flex flex-col gap-3 sm:gap-4 mt-4">
+                                <a href="index.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Home</a>
+                                <a href="services.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Services</a>
+                                <a href="doctors.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Doctors</a>
+                                <a href="about.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">About</a>
+                                <a href="contact.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Contact</a>
+                            </nav>
+                            <a class="bg-primary text-white px-4 sm:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl mt-4 book-appointment text-sm sm:text-base block text-center">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Carousel Section -->
+        <section class="carousel h-[700px] relative">
+            <div class="carousel-inner h-full">
+                <div class="carousel-item h-full active">
+                    <img src="./img/done/team-pic.JPG" alt="Hospital" class="w-full h-full object-cover">
+                    <div class="carousel-overlay"></div>
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="max-w-7xl mx-auto px-4 w-full">
+                            <div class="max-w-2xl carousel-content">
+                                <h1 class="text-5xl font-bold text-white mb-6">Expert Medical Professionals</h1>
+                                <p class="text-xl text-gray-200 mb-8">Our team of experienced doctors and healthcare professionals is dedicated to your well-being.</p>
+                                <a class="bg-primary cursor-pointer text-white px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-flex items-center book-appointment">
+                                    <span>Book Appointment</span>
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item h-full">
+                    <img src="img/done/front-view.JPG" alt="Medical Team" class="w-full h-full object-cover">
+                    <div class="carousel-overlay"></div>
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="max-w-7xl mx-auto px-4 w-full">
+                            <div class="max-w-2xl carousel-content">
+                                <h1 class="text-5xl font-bold text-white mb-6">Nurturing Your well-being</h1>
+                                <p class="text-xl text-gray-200 mb-8">Supporting your health journey with preventative care and personalized attention.</p>
+                                <a href="doctors.html" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-flex items-center">
+                                    <span>Meet Our Team</span>
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item h-full">
+                    <img src="./img/done/IMG_8988.JPG" alt="Medical Technology" class="w-full h-full object-cover">
+                    <div class="carousel-overlay"></div>
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="max-w-7xl mx-auto px-4 w-full">
+                            <div class="max-w-2xl carousel-content">
+                                <h1 class="text-5xl font-bold text-white mb-6">Your Neighborhood Health Partner</h1>
+                                <p class="text-xl text-gray-200 mb-8">Friendly and professional medical services, dedicated to our local community.</p>
+                                <a href="services.html" class="bg-primary text-white px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-flex items-center">
+                                    <span>Our Services</span>
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control carousel-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-control carousel-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="carousel-indicators">
+                <div class="carousel-indicator active"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
+            </div>
+            <div class="carousel-progress"></div>
+        </section>
+    </div>
+    <!-- Hero Section -->
+    <section class="hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="hero-content animate-on-scroll fade-up">
+                    <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 animate-delay-100">
+                        Welcome to Chanse
+                    </div>
+                    <h1 class="text-5xl font-bold text-dark mb-6 leading-tight animate-delay-200">
+                        Most Trusted Pattern For
+                        <span class="gradient-text">Your Health.</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed animate-delay-300">
+                        Experience world-class healthcare with our expert medical professionals. We provide comprehensive medical services with cutting-edge technology and compassionate care.
+                    </p>
+                    <div class="flex space-x-4 animate-delay-400">
+                        <a class="bg-primary text-white px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl flex items-center book-appointment pulse-animation">
+                            <span>Book Appointment</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="services.html" class="border-2 border-primary text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition duration-300 flex items-center">
+                            <span>Our Services</span>
+                            <i class="fas fa-chevron-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mt-12">
+                        <div class="stat-card stat-card-animate p-4 rounded-xl shadow-lg animate-delay-500">
+                            <div class="text-3xl font-bold text-primary">24/7</div>
+                            <div class="text-sm text-gray-600">Emergency Care</div>
+                        </div>
+                        <div class="stat-card stat-card-animate p-4 rounded-xl shadow-lg animate-delay-600">
+                            <div class="text-3xl font-bold text-primary">5+</div>
+                            <div class="text-sm text-gray-600">Expert Doctors</div>
+                        </div>
+                        <div class="stat-card stat-card-animate p-4 rounded-xl shadow-lg animate-delay-700">
+                            <div class="text-3xl font-bold text-primary">1k+</div>
+                            <div class="text-sm text-gray-600">Happy Patients</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative hero-image animate-on-scroll fade-right">
+                    <div class="absolute -top-6 -right-6 w-72 h-72 bg-primary/10 rounded-full filter blur-3xl floating-element"></div>
+                    <img src="img/done/hero section.jpg" alt="Hospital" class="rounded-2xl shadow-2xl relative z-10">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl z-20 animate-on-scroll bounce-in animate-delay-800">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary/10 p-3 rounded-full">
+                                <i class="fas fa-user-md text-logoGreen text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg">Expert Doctors</h3>
+                                <p class="text-gray-600">24/7 Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                    Why Choose Us
+                </div>
+                <h2 class="text-4xl font-bold text-dark mb-4">Excellence in Healthcare</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We are committed to providing the highest quality healthcare services with a focus on patient comfort and satisfaction.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="why-card why-animate bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 relative">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 relative z-10">
+                        <i class="fas fa-award text-logoGreen text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 relative z-10">Accredited Facility</h3>
+                    <p class="text-gray-600 text-sm relative z-10">Recognized for excellence in healthcare delivery, patient care and integrity.</p>
+                </div>
+                <div class="why-card why-animate bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 relative">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 relative z-10">
+                        <i class="fas fa-clock text-logoGreen text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 relative z-10">24/7 Service</h3>
+                    <p class="text-gray-600 text-sm relative z-10">Round-the-clock medical care, emergency services and physician consultations.</p>
+                </div>
+                <div class="why-card why-animate bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 relative">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 relative z-10">
+                        <i class="fas fa-microscope text-logoGreen text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 relative z-10">Advanced Technology</h3>
+                    <p class="text-gray-600 text-sm relative z-10">State-of-the-art medical equipment and facilities.</p>
+                </div>
+                <div class="why-card why-animate bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 relative">
+                    <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 relative z-10">
+                        <i class="fas fa-heart text-logoGreen text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 relative z-10">Patient-Centered Care</h3>
+                    <p class="text-gray-600 text-sm relative z-10">Personalized treatment plans and compassionate care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4 section-title animate-on-scroll fade-up">
+                    Our Services
+                </div>
+                <h2 class="text-4xl font-bold text-dark mb-4 section-title animate-on-scroll fade-up animate-delay-200">Comprehensive Healthcare Solutions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto section-subtitle animate-on-scroll fade-up animate-delay-300">We offer a wide range of medical services to ensure you receive the best possible care for your health needs.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 card-hover service-card animate-on-scroll fade-up animate-delay-100">
+                    <div class="bg-primary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-logoGreen text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Physician</h3>
+                    <p class="text-gray-600">Comprehensive medical care for a wide range of health concerns, focusing on diagnosis, treatment, and preventive medicine.</p>
+                <ul class="mt-4 space-y-2">
+                    <li class="flex items-center text-gray-600">
+                        <i class="fas fa-check text-primary mr-2"></i> General Health Check-ups
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <i class="fas fa-check text-primary mr-2"></i> Diagnosis & Treatment of Common Illnesses
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <i class="fas fa-check text-primary mr-2"></i> Preventive Health Care & Lifestyle Advice
+                    </li>
+                </ul>
+
+                    <a href="services.html" class="inline-flex items-center text-primary mt-4 hover:text-blue-700">
+            Learn More
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 card-hover service-card animate-on-scroll fade-up animate-delay-200">
+                    <div class="bg-primary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-microscope text-logoGreen text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Laboratory</h3>
+                    <p class="text-gray-600">Examination of body fluids, tissues, and organs to detect diseases and monitor health.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Blood Tests
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Liver Function Tests
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Urine Tests
+                        </li>
+                    </ul>
+                    <a href="services.html" class="inline-flex items-center text-primary mt-4 hover:text-blue-700">
+            Learn More
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 card-hover service-card animate-on-scroll fade-up animate-delay-300">
+                    <div class="bg-primary/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-baby text-logoGreen text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Pediatrics</h3>
+                    <p class="text-gray-600">Specialized care for children, from newborns to adolescents, focusing on growth, development, and overall health.</p>
+                    <ul class="mt-4 space-y-2">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Vaccinations
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Growth and Development Monitoring
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Nutrition and Feeding Guidance
+                        </li>
+                    </ul>
+                    <a href="services.html" class="inline-flex items-center text-primary mt-4 hover:text-blue-700">
+            Learn More
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-gradient-to-r from-primary to-logoGreen text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
+                    <i class="fas fa-quote-left mr-2"></i>Patient Testimonials
+                </div>
+                <h2 class="text-5xl font-bold text-dark mb-6">What Our <span class="gradient-text">Patients Say</span></h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Discover why thousands of patients trust us with their healthcare needs. Read authentic stories from our community.</p>
+            </div>
+
+            <!-- Testimonials Carousel -->
+            <div class="testimonials-carousel relative">
+                <div class="carousel-container overflow-hidden rounded-2xl">
+                    <div class="carousel-track flex transition-transform duration-700 ease-in-out" id="testimonial-track">
+                        <!-- Testimonial 1 -->
+                        <div class="carousel-slide flex-shrink-0 w-full px-4">
+                            <div class="testimonial-card bg-white p-8 md:p-12 rounded-2xl shadow-xl relative h-full transform transition-all duration-500 hover:scale-105 max-w-4xl mx-auto">
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-logoGreen/10 rounded-bl-full"></div>
+                                <div class="relative z-10">
+                                    <div class="flex flex-col md:flex-row items-center mb-8 text-center md:text-left">
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mr-0 md:mr-6 mb-4 md:mb-0 ring-4 ring-primary/20">
+                                            <img src="./img/done/placeholder.png" alt="Sarah Johnson" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xl text-dark">Ronny Adams</h4>
+                                            <p class="text-primary font-medium text-lg">Cardiac Patient</p>
+                                            <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-8 text-center">
+                                        <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"The care I received at CHANSE Clinic was exceptional. The doctors and staff were professional, caring, and made me feel like family throughout my treatment journey. Their expertise and compassion truly made a difference
+                                            in my recovery."</p>
+                                        <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="carousel-slide flex-shrink-0 w-full px-4">
+                            <div class="testimonial-card bg-white p-8 md:p-12 rounded-2xl shadow-xl relative h-full transform transition-all duration-500 hover:scale-105 max-w-4xl mx-auto">
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-logoGreen/10 rounded-bl-full"></div>
+                                <div class="relative z-10">
+                                    <div class="flex flex-col md:flex-row items-center mb-8 text-center md:text-left">
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mr-0 md:mr-6 mb-4 md:mb-0 ring-4 ring-primary/20">
+                                            <img src="./img/done/placeholder.png" alt="Michael Chen" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xl text-dark">Kamugisha Collin</h4>
+                                            <p class="text-primary font-medium text-lg">Neurology Patient</p>
+                                            <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-8 text-center">
+                                        <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"The neurology department's expertise and the clinic's advanced technology made my treatment successful. The personalized care approach exceeded my expectations, and I'm grateful for the comprehensive support throughout
+                                            my journey."</p>
+                                        <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="carousel-slide flex-shrink-0 w-full px-4">
+                            <div class="testimonial-card bg-white p-8 md:p-12 rounded-2xl shadow-xl relative h-full transform transition-all duration-500 hover:scale-105 max-w-4xl mx-auto">
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-logoGreen/10 rounded-bl-full"></div>
+                                <div class="relative z-10">
+                                    <div class="flex flex-col md:flex-row items-center mb-8 text-center md:text-left">
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mr-0 md:mr-6 mb-4 md:mb-0 ring-4 ring-primary/20">
+                                            <img src="./img/done/placeholder.png" alt="Emily Brown" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xl text-dark">Mukasa Godfrey</h4>
+                                            <p class="text-primary font-medium text-lg">Pediatric Care</p>
+                                            <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-8 text-center">
+                                        <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"The pediatric team at CHANSE Clinic is incredible. They made my children feel comfortable and explained everything clearly. Their gentle approach and medical expertise give me complete confidence in their care."</p>
+                                        <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 4 -->
+                        <div class="carousel-slide flex-shrink-0 w-full px-4">
+                            <div class="testimonial-card bg-white p-8 md:p-12 rounded-2xl shadow-xl relative h-full transform transition-all duration-500 hover:scale-105 max-w-4xl mx-auto">
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-logoGreen/10 rounded-bl-full"></div>
+                                <div class="relative z-10">
+                                    <div class="flex flex-col md:flex-row items-center mb-8 text-center md:text-left">
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mr-0 md:mr-6 mb-4 md:mb-0 ring-4 ring-primary/20">
+                                            <img src="./img/done/placeholder.png" alt="David Wilson" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xl text-dark">David Okello</h4>
+                                            <p class="text-primary font-medium text-lg">Emergency Care</p>
+                                            <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-8 text-center">
+                                        <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"When I needed emergency care, CHANSE Clinic was there immediately. The response time and quality of care were outstanding. The medical team's professionalism and quick thinking saved my life."</p>
+                                        <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 5 -->
+                        <div class="carousel-slide flex-shrink-0 w-full px-4">
+                            <div class="testimonial-card bg-white p-8 md:p-12 rounded-2xl shadow-xl relative h-full transform transition-all duration-500 hover:scale-105 max-w-4xl mx-auto">
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-logoGreen/10 rounded-bl-full"></div>
+                                <div class="relative z-10">
+                                    <div class="flex flex-col md:flex-row items-center mb-8 text-center md:text-left">
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mr-0 md:mr-6 mb-4 md:mb-0 ring-4 ring-primary/20">
+                                            <img src="./img/done/placeholder.png" alt="Lisa Martinez" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xl text-dark">Lisa Marinya</h4>
+                                            <p class="text-primary font-medium text-lg">Maternity Care</p>
+                                            <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-8 text-center">
+                                        <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"My maternity experience at CHANSE Clinic was beautiful. The staff was supportive, caring, and made my pregnancy journey memorable and safe. I couldn't have asked for better care for me and my baby."</p>
+                                        <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 6 -->
+                        <div class="carousel-slide flex-shrink-0 w-full px-4">
+                            <div class="testimonial-card bg-white p-8 md:p-12 rounded-2xl shadow-xl relative h-full transform transition-all duration-500 hover:scale-105 max-w-4xl mx-auto">
+                                <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/10 to-logoGreen/10 rounded-bl-full"></div>
+                                <div class="relative z-10">
+                                    <div class="flex flex-col md:flex-row items-center mb-8 text-center md:text-left">
+                                        <div class="w-20 h-20 rounded-full overflow-hidden mr-0 md:mr-6 mb-4 md:mb-0 ring-4 ring-primary/20">
+                                            <img src="./img/done/placeholder.png" alt="Robert Taylor" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xl text-dark">Robert Mugabe</h4>
+                                            <p class="text-primary font-medium text-lg">General Medicine</p>
+                                            <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                                <i class="fas fa-star text-lg"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-8 text-center">
+                                        <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"The general medicine department provides comprehensive care with a personal touch. I appreciate their attention to detail and follow-up care. They truly understand the importance of preventive healthcare."</p>
+                                        <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrows -->
+                <button class="carousel-nav prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-primary hover:text-logoGreen w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 z-10" onclick="moveCarousel(-1)">
+                    <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+                <button class="carousel-nav next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-primary hover:text-logoGreen w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 z-10" onclick="moveCarousel(1)">
+                    <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+
+                <!-- Carousel Dots -->
+                <div class="flex justify-center mt-8 space-x-3">
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-primary/30 transition-all duration-300 active" onclick="goToSlide(0)"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-primary/30 transition-all duration-300" onclick="goToSlide(1)"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-primary/30 transition-all duration-300" onclick="goToSlide(2)"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-primary/30 transition-all duration-300" onclick="goToSlide(3)"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-primary/30 transition-all duration-300" onclick="goToSlide(4)"></button>
+                    <button class="carousel-dot w-3 h-3 rounded-full bg-primary/30 transition-all duration-300" onclick="goToSlide(5)"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Care Section -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="emergency-content animate-on-scroll fade-left">
+                    <h2 class="text-4xl font-bold mb-6">24/7 Emergency Care</h2>
+                    <p class="text-lg mb-8">Our emergency department is staffed with experienced medical professionals and equipped with state-of-the-art technology to provide immediate care when you need it most.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center animate-on-scroll fade-up animate-delay-200">
+                            <i class="fas fa-phone-alt text-2xl mr-4 pulse-animation"></i>
+                            <div>
+                                <h3 class="font-bold">Emergency Hotline</h3>
+                                <p class="text-xl">(+256) 759130250</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center animate-on-scroll fade-up animate-delay-300">
+                            <i class="fas fa-clock text-2xl mr-4"></i>
+                            <div>
+                                <h3 class="font-bold">Available 24/7</h3>
+                                <p>Round-the-clock emergency services</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="inline-flex items-center bg-white text-primary px-8 py-3 rounded-full mt-8 hover:bg-gray-100 transition duration-300 animate-on-scroll bounce-in animate-delay-400">
+                        <span>Contact Emergency</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="relative emergency-image animate-on-scroll fade-right">
+                    <img src="img/done/emergency.jpg" alt="Emergency Care" class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl animate-on-scroll zoom-in animate-delay-600">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-primary/10 p-3 rounded-full">
+                                <i class="fas fa-ambulance text-logoGreen text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-dark">Quick Response</h3>
+                                <p class="text-gray-600">0759130250</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4 section-title animate-on-scroll fade-up">
+                    Latest News
+                </div>
+                <h2 class="text-4xl font-bold text-dark mb-4 section-title animate-on-scroll fade-up animate-delay-200">Chanse Updates</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto section-subtitle animate-on-scroll fade-up animate-delay-300">Stay informed about the latest developments in healthcare and medical research.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover news-card animate-on-scroll fade-up animate-delay-100">
+                    <img src="./img/done/room.jpg" alt="News" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-gray-500 mb-2">April 15, 2025</div>
+                        <h3 class="text-xl font-bold mb-2">New Care Unit Opening</h3>
+                        <p class="text-gray-600 mb-4">We're expanding our cardiac care facilities with state-of-the-art equipment and specialized staff.</p>
+                        <a href="#" class="text-primary hover:text-blue-700">Read More →</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover news-card animate-on-scroll fade-up animate-delay-200">
+                    <img src="./img/done/Immunisation2.jpg" alt="News" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-gray-500 mb-2">April 10, 2025</div>
+                        <h3 class="text-xl font-bold mb-2">Children's Immunisation </h3>
+                        <p class="text-gray-600 mb-4">Latest information about our immunisation program and safety protocols.</p>
+                        <a href="#" class="text-primary hover:text-blue-700">Read More →</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover news-card animate-on-scroll fade-up animate-delay-300">
+                    <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="News" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-sm text-gray-500 mb-2">April 5, 2025</div>
+                        <h3 class="text-xl font-bold mb-2">Medical Research Breakthrough</h3>
+                        <p class="text-gray-600 mb-4">Our research team makes significant progress in neurological treatments.</p>
+                        <a href="#" class="text-primary hover:text-blue-700">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-section animate-on-scroll fade-up animate-delay-100">
+                    <div class="flex items-center mb-6">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-32 w-auto mr-30 bg-white rounded-lg p-1" />
+                        <span class="text-2xl font-bold ml-1">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                    </div>
+                    <p class="text-gray-400">Providing quality healthcare services with compassion and excellence.</p>
+                </div>
+                <div class="footer-section animate-on-scroll fade-up animate-delay-200">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="doctors.html" class="text-gray-400 hover:text-white transition duration-300">Doctors</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animate-on-scroll fade-up animate-delay-300">
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Physician</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Labaratory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pediatric</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">General Medicine</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section animate-on-scroll fade-up animate-delay-400">
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates and health tips.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" name="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none bg-gray-800 text-white placeholder-gray-400" required>
+                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+                    </form>
+                    <div id="newsletter-message" class="mt-2 text-sm hidden"></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+256759130250" target="_blank" class="whatsapp-button" title="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="back-to-top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    </div>
+
+    <!-- Appointment Form Modal -->
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book an Appointment</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service_type" class="form-control">
+                        <option value="">Select a service</option>
+                        <option value="General Consultation">General Consultation</option>
+                        <option value="Pediatric Care">Pediatric Care</option>
+                        <option value="Emergency Care">Physician</option>
+                        <option value="Vaccination">Vaccination</option>
+                        <option value="Laboratory Tests">Laboratory Tests</option>
+                        <option value="Prenatal Care">Prenatal Care</option>
+                        <option value="Family Planning">Family Planning</option>
+                        <option value="Laboratory">Labaratory</option>
+                        <option value="ECG & ECHO">ECG & ECHO</option>
+                        <option value="SCAN">SCAN</option>
+                    </select>
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (Optional)</label>
+                        <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="Any additional information or special requests..."></textarea>
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel">Cancel</button>
+                <button class="submit" id="submit-appointment">Book Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Notification -->
+    <div id="success-notification" class="fixed top-4 right-4 bg-green-600 text-white px-8 py-4 rounded-xl shadow-2xl transform translate-x-full transition-transform duration-300 z-50 border-l-4 border-green-400 opacity-0 pointer-events-none">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-3 text-green-200" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <div>
+                <div class="font-semibold text-lg">Success!</div>
+                <span id="success-message" class="text-green-100">Appointment booked successfully!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Notification -->
+    <div id="error-notification" class="fixed top-4 right-4 bg-red-600 text-white px-8 py-4 rounded-xl shadow-2xl transform translate-x-full transition-transform duration-300 z-50 border-l-4 border-red-400 opacity-0 pointer-events-none">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-3 text-red-200" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+            </svg>
+            <div>
+                <div class="font-semibold text-lg">Error!</div>
+                <span id="error-message" class="text-red-100">An error occurred. Please try again.</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add CSS to ensure notifications are hidden by default
+        const notificationStyles = document.createElement('style');
+        notificationStyles.textContent = `
+            #success-notification, #error-notification {
+                transform: translateX(100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s ease-in-out;
+            }
+            #success-notification.show, #error-notification.show {
+                transform: translateX(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+        `;
+        document.head.appendChild(notificationStyles);
+
+        // Enhanced Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel-inner');
+            const items = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            const progressBar = document.querySelector('.carousel-progress');
+            let currentIndex = 0;
+            let autoPlayInterval;
+            let progressInterval;
+            let isTransitioning = false;
+
+            function updateCarousel() {
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                
+                // Update carousel position
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Update active states
+                items.forEach((item, index) => {
+                    item.classList.toggle('active', index === currentIndex);
+                });
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+
+                // Reset and start progress bar
+                resetProgressBar();
+                startProgressBar();
+                
+                // Allow next transition after animation completes
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 800);
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                updateCarousel();
+            }
+
+            function goToSlide(index) {
+                if (index !== currentIndex && !isTransitioning) {
+                    currentIndex = index;
+                    updateCarousel();
+                    resetAutoPlay();
+                }
+            }
+
+            function startProgressBar() {
+                progressBar.classList.remove('active');
+                // Force reflow
+                progressBar.offsetHeight;
+                progressBar.classList.add('active');
+            }
+
+            function resetProgressBar() {
+                progressBar.classList.remove('active');
+            }
+
+            function startAutoPlay() {
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+                resetProgressBar();
+            }
+
+            function resetAutoPlay() {
+                stopAutoPlay();
+                startAutoPlay();
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoPlay();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoPlay();
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+
+            // Pause on hover
+            const carouselSection = document.querySelector('.carousel');
+            carouselSection.addEventListener('mouseenter', stopAutoPlay);
+            carouselSection.addEventListener('mouseleave', startAutoPlay);
+
+            // Touch/swipe support for mobile
+            let startX = 0;
+            let endX = 0;
+            let startY = 0;
+            let endY = 0;
+
+            carouselSection.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            });
+
+            carouselSection.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                endY = e.changedTouches[0].clientY;
+                
+                const diffX = startX - endX;
+                const diffY = startY - endY;
+                
+                // Only trigger swipe if horizontal movement is greater than vertical
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        nextSlide(); // Swipe left
+                    } else {
+                        prevSlide(); // Swipe right
+                    }
+                    resetAutoPlay();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoPlay();
+                }
+            });
+
+            // Initialize carousel
+            updateCarousel();
+            startAutoPlay();
+
+            // Intersection Observer for performance
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startAutoPlay();
+                    } else {
+                        stopAutoPlay();
+                    }
+                });
+            });
+
+            observer.observe(carouselSection);
+        });
+
+        // Hamburger/mobile menu logic
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenu.addEventListener('click', e => {
+            if (e.target === mobileMenu) closeMobileMenu();
+        });
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        // Close on ESC
+        window.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+
+        // Animate Why Choose Us cards on scroll
+        function animateWhyCards() {
+            const cards = document.querySelectorAll('.why-animate');
+            const trigger = window.innerHeight * 0.92;
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < trigger) card.classList.add('visible');
+            });
+        }
+        window.addEventListener('scroll', animateWhyCards);
+        window.addEventListener('DOMContentLoaded', animateWhyCards);
+        // Animate Testimonials cards on scroll
+        function animateTestimonialCards() {
+            const cards = document.querySelectorAll('.testimonial-animate');
+            const trigger = window.innerHeight * 0.92;
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < trigger) card.classList.add('visible');
+            });
+        }
+        window.addEventListener('scroll', animateTestimonialCards);
+        window.addEventListener('DOMContentLoaded', animateTestimonialCards);
+
+        // Appointment Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            const appointmentForm = document.getElementById('appointment-form');
+            const modalClose = appointmentModal.querySelector('.modal-close');
+            const cancelBtn = appointmentModal.querySelector('.cancel');
+            const submitBtn = appointmentModal.querySelector('.submit');
+            const bookAppointmentBtns = document.querySelectorAll('.book-appointment');
+
+            function openAppointmentModal() {
+                appointmentModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeAppointmentModal() {
+                appointmentModal.classList.remove('active');
+                document.body.style.overflow = '';
+                appointmentForm.reset();
+            }
+
+            // Add click event listeners to all book appointment buttons
+            bookAppointmentBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openAppointmentModal();
+                });
+            });
+
+            modalClose.addEventListener('click', closeAppointmentModal);
+            cancelBtn.addEventListener('click', closeAppointmentModal);
+            appointmentModal.addEventListener('click', e => {
+                if (e.target === appointmentModal) closeAppointmentModal();
+            });
+
+            // Add error styling
+            $('<style>')
+                .text(`
+                    .error {
+                        border-color: #EF4444 !important;
+                        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+                    }
+                    .error-message {
+                        display: none;
+                        margin-top: 0.25rem;
+                    }
+                    .error-message.visible {
+                        display: block;
+                    }
+                `)
+                .appendTo('head');
+
+            // Form validation
+            $(document).ready(function() {
+                const appointmentForm = $('#appointment-form');
+                const submitBtn = $('.submit');
+
+                // Validation rules
+                const validationRules = {
+                    name: {
+                        required: true,
+                        minlength: 2,
+                        message: 'Please enter your full name'
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                        message: 'Please enter a valid email address'
+                    },
+                    phone: {
+                        required: true,
+                        pattern: /^[0-9+\-\s()]{10,}$/,
+                        message: 'Please enter a valid phone number'
+                    },
+                    date: {
+                        required: true,
+                        message: 'Please select a preferred date'
+                    },
+                    time: {
+                        required: true,
+                        message: 'Please select a preferred time'
+                    },
+                    service_type: {
+                        required: true,
+                        message: 'Please select a service'
+                    },
+                    service: {
+                        required: true,
+                        message: 'Please select a service'
+                    },
+                    notes: {
+                        required: false,
+                        message: 'Additional notes are optional'
+                    }
+                };
+
+                // Real-time validation
+                appointmentForm.find('input, select, textarea').on('blur', function() {
+                    validateField($(this));
+                });
+
+                // Validate single field
+                function validateField(field) {
+                    const fieldName = field.attr('name');
+                    const fieldValue = field.val();
+                    const rules = validationRules[fieldName];
+                    const errorElement = field.siblings('.error-message');
+
+                    field.removeClass('error');
+                    errorElement.removeClass('visible').text('');
+
+                    // Safety check - if no rules defined, skip validation
+                    if (!rules) {
+                        return true;
+                    }
+
+                    if (rules.required && !fieldValue) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+
+                    if (fieldValue) {
+                        if (rules.email && !isValidEmail(fieldValue)) {
+                            showError(field, errorElement, rules.message);
+                            return false;
+                        }
+                        if (rules.pattern && !rules.pattern.test(fieldValue)) {
+                            showError(field, errorElement, rules.message);
+                            return false;
+                        }
+                        if (rules.minlength && fieldValue.length < rules.minlength) {
+                            showError(field, errorElement, rules.message);
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+
+                // Show error
+                function showError(field, errorElement, message) {
+                    field.addClass('error');
+                    errorElement.text(message).addClass('visible');
+                }
+
+                // Email validation helper
+                function isValidEmail(email) {
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                }
+
+                // Form submission
+                submitBtn.on('click', function(e) {
+                    e.preventDefault();
+
+                    // Debug: Check what fields are found
+                    console.log('Form fields found:');
+                    appointmentForm.find('input, select, textarea').each(function() {
+                        const field = $(this);
+                        console.log('Field:', field.attr('name'), 'Value:', field.val());
+                    });
+
+                    let isValid = true;
+
+                    // Validate all fields
+                    appointmentForm.find('input, select, textarea').each(function() {
+                        if (!validateField($(this))) {
+                            isValid = false;
+                        }
+                    });
+
+                    if (isValid) {
+                        // Show loading state
+                        submitBtn.prop('disabled', true).text('Booking...');
+
+                        // Collect form data
+                        const formData = {
+                            name: $('#name').val(),
+                            email: $('#email').val(),
+                            phone: $('#phone').val(),
+                            date: $('#date').val(),
+                            time: $('#time').val(),
+                            service_type: $('#service').val(),
+                            notes: $('#notes').val()
+                        };
+
+                        // Debug: Log the form data
+                        console.log('Form data being sent:', formData);
+                        console.log('JSON string:', JSON.stringify(formData));
+
+                        // Send to backend
+                        fetch('backend/routes/appointment.php?action=book', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(formData)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    showNotification('success', data.message || 'Appointment booked successfully!');
+                                    closeAppointmentModal();
+                                    appointmentForm[0].reset();
+                                } else {
+                                    showNotification('error', data.message || 'Failed to book appointment. Please try again.');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                showNotification('error', 'Network error. Please check your connection and try again.');
+                            })
+                            .finally(() => {
+                                // Reset button state
+                                submitBtn.prop('disabled', false).text('Book Appointment');
+                            });
+                    }
+                });
+
+                // --- NEWSLETTER FORM ---
+                $('#newsletter-form').on('submit', function(e) {
+                    e.preventDefault();
+                    const emailField = $(this).find('input[name="email"]');
+                    const messageDiv = $('#newsletter-message');
+                    const email = emailField.val().trim();
+
+                    messageDiv.removeClass('text-green-500 text-red-500').addClass('hidden');
+
+                    if (!isValidEmail(email)) {
+                        messageDiv.text('Please enter a valid email address').removeClass('hidden').addClass('text-red-500');
+                        return false;
+                    }
+
+                    const submitBtn = $(this).find('button[type="submit"]');
+                    const originalText = submitBtn.html();
+                    submitBtn.html('<i class="fas fa-spinner fa-spin"></i>').prop('disabled', true);
+
+                    fetch('backend/routes/newsletter.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                action: 'subscribe',
+                                email: email,
+                                source: 'website'
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                messageDiv.text(data.message).removeClass('hidden').addClass('text-green-500');
+                                this.reset();
+                            } else {
+                                messageDiv.text(data.message).removeClass('hidden').addClass('text-red-500');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Newsletter subscription error:', error);
+                            messageDiv.text('An error occurred. Please try again.').removeClass('hidden').addClass('text-red-500');
+                        })
+                        .finally(() => {
+                            submitBtn.html(originalText).prop('disabled', false);
+                        });
+                });
+            });
+        });
+
+        // Notification functions
+        function showNotification(type, message) {
+            const notification = document.getElementById(type + '-notification');
+            const messageElement = document.getElementById(type + '-message');
+
+            // Hide all notifications first
+            document.querySelectorAll('#success-notification, #error-notification').forEach(notif => {
+                notif.classList.remove('show');
+            });
+
+            // Set the message
+            messageElement.textContent = message;
+
+            // Show the specific notification
+            notification.classList.add('show');
+
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Back to Top Button Functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        //navbar scroll functionality
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 50) {
+                $('#navbar').addClass('bg-white shadow').removeClass('text-white');
+            } else {
+                $('#navbar').removeClass('bg-white shadow text-white').addClass('text-white');
+            }
+        });
+
+        // Fetch and inject dynamic site settings
+        fetch('backend/routes/settings.php')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.settings) {
+                    const s = data.settings;
+                    if (s.site_name) {
+                        document.getElementById('dynamic-site-name').textContent = s.site_name;
+                        document.getElementById('dynamic-site-title').textContent = s.site_name + ' - Your Health, Our Priority';
+                    }
+                    if (s.site_description) {
+                        document.getElementById('dynamic-site-description').textContent = s.site_description;
+                    }
+                    if (s.address) {
+                        document.getElementById('dynamic-address').textContent = s.address;
+                    }
+                    if (s.phone_number) {
+                        document.getElementById('dynamic-phone').textContent = s.phone_number;
+                    }
+                    if (s.contact_email) {
+                        document.getElementById('dynamic-contact-email').textContent = s.contact_email;
+                    }
+                    if (s.business_hours) {
+                        document.getElementById('dynamic-business-hours').textContent = s.business_hours;
+                    }
+                }
+            });
+
+        // Testimonials Carousel Functionality
+        let currentSlide = 0;
+        const totalSlides = 6;
+        let autoPlayInterval;
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+
+            updateCarousel();
+            updateDots();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+            updateDots();
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('testimonial-track');
+            const slideWidth = 100; // Show 1 slide at a time
+            const translateX = -(currentSlide * slideWidth);
+            track.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                    dot.classList.remove('bg-primary/30');
+                    dot.classList.add('bg-primary');
+                    dot.classList.remove('w-3');
+                    dot.classList.add('w-8');
+                } else {
+                    dot.classList.remove('active');
+                    dot.classList.remove('bg-primary');
+                    dot.classList.add('bg-primary/30');
+                    dot.classList.remove('w-8');
+                    dot.classList.add('w-3');
+                }
+            });
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                moveCarousel(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Initialize carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCarousel();
+            updateDots();
+            startAutoPlay();
+
+            // Pause auto-play on hover
+            const carousel = document.querySelector('.testimonials-carousel');
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+
+            // Touch/swipe support for mobile
+            let startX = 0;
+            let endX = 0;
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        moveCarousel(1); // Swipe left
+                    } else {
+                        moveCarousel(-1); // Swipe right
+                    }
+                }
+            });
+        });
+    </script>
+<script>
+        // Universal Animation System
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Unobserve after animation to prevent re-triggering
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animation classes
+            const animatedElements = document.querySelectorAll('.animate-on-scroll, .why-animate, .testimonial-animate, .hero-content, .hero-image, .stat-card-animate, .service-card, .emergency-content, .emergency-image, .news-card, .footer-section, .section-title, .section-subtitle');
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Enhanced Carousel Functionality
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-item');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            const progressBar = document.querySelector('.carousel-progress');
+            let autoSlideInterval;
+            let isTransitioning = false;
+
+            function updateCarousel() {
+                if (isTransitioning) return;
+                isTransitioning = true;
+
+                const carousel = document.querySelector('.carousel-inner');
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                // Update active states
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentSlide);
+                });
+
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+
+                // Reset and start progress bar
+                if (progressBar) {
+                    progressBar.classList.remove('active');
+                    setTimeout(() => {
+                        progressBar.classList.add('active');
+                    }, 100);
+                }
+
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 800);
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateCarousel();
+            }
+
+            function goToSlide(index) {
+                if (index !== currentSlide && !isTransitioning) {
+                    currentSlide = index;
+                    updateCarousel();
+                    resetAutoSlide();
+                }
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // Event listeners for carousel controls
+            document.querySelector('.carousel-next')?.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+
+            document.querySelector('.carousel-prev')?.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            // Indicator click events
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => goToSlide(index));
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoSlide();
+                }
+            });
+
+            // Touch/swipe support
+            let startX = 0;
+            let endX = 0;
+
+            document.querySelector('.carousel')?.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            document.querySelector('.carousel')?.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                    resetAutoSlide();
+                }
+            });
+
+            // Pause on hover
+            document.querySelector('.carousel')?.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            document.querySelector('.carousel')?.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+
+            // Initialize carousel
+            updateCarousel();
+            startAutoSlide();
+
+            // Testimonials Carousel
+            let testimonialCurrentSlide = 0;
+            const testimonialSlides = document.querySelectorAll('.carousel-slide');
+            const testimonialDots = document.querySelectorAll('.carousel-dot');
+            const testimonialTrack = document.getElementById('testimonial-track');
+
+            function updateTestimonialCarousel() {
+                if (testimonialTrack) {
+                    testimonialTrack.style.transform = `translateX(-${testimonialCurrentSlide * 100}%)`;
+                }
+
+                testimonialDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === testimonialCurrentSlide);
+                });
+            }
+
+            window.moveCarousel = function(direction) {
+                testimonialCurrentSlide += direction;
+                if (testimonialCurrentSlide < 0) {
+                    testimonialCurrentSlide = testimonialSlides.length - 1;
+                } else if (testimonialCurrentSlide >= testimonialSlides.length) {
+                    testimonialCurrentSlide = 0;
+                }
+                updateTestimonialCarousel();
+            };
+
+            window.goToSlide = function(index) {
+                testimonialCurrentSlide = index;
+                updateTestimonialCarousel();
+            };
+
+            // Auto-advance testimonials
+            setInterval(() => {
+                moveCarousel(1);
+            }, 8000);
+
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+            mobileMenuToggle?.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+
+            mobileMenuClose?.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+
+            // Close mobile menu when clicking outside
+            mobileMenu?.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Navbar scroll effect - keeping original behavior
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                // Keep original navbar behavior without changes
+            });
+
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton?.classList.add('visible');
+                } else {
+                    backToTopButton?.classList.remove('visible');
+                }
+            });
+
+            backToTopButton?.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Appointment Modal
+            const modal = document.getElementById('appointment-modal');
+            const bookAppointmentButtons = document.querySelectorAll('.book-appointment');
+            const modalClose = document.querySelector('.modal-close');
+            const appointmentForm = document.getElementById('appointment-form');
+
+            bookAppointmentButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal?.classList.add('active');
+                });
+            });
+
+            modalClose?.addEventListener('click', () => {
+                modal?.classList.remove('active');
+            });
+
+            modal?.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Form submission
+            appointmentForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(appointmentForm);
+                const appointmentData = Object.fromEntries(formData);
+                
+                // Here you would typically send the data to your server
+                console.log('Appointment Data:', appointmentData);
+                
+                // Show success message
+                alert('Appointment request submitted successfully! We will contact you soon.');
+                
+                // Close modal and reset form
+                modal?.classList.remove('active');
+                appointmentForm.reset();
+            });
+
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletter-form');
+            const newsletterMessage = document.getElementById('newsletter-message');
+
+            newsletterForm?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = e.target.email.value;
+                
+                // Simulate API call
+                newsletterMessage.textContent = 'Subscribing...';
+                newsletterMessage.className = 'mt-2 text-sm text-blue-400';
+                newsletterMessage.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    newsletterMessage.textContent = 'Successfully subscribed!';
+                    newsletterMessage.className = 'mt-2 text-sm text-green-400';
+                    e.target.reset();
+                    
+                    setTimeout(() => {
+                        newsletterMessage.classList.add('hidden');
+                    }, 3000);
+                }, 1000);
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Performance optimization: Lazy load images
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+
+            // Add loading states for better UX
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+
+            // Error handling for images
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                });
+            });
+
+            console.log('🎉 Chanse Clinic website loaded successfully with enhanced animations!');
+        });
+    </script>
+</body>
+
+</html>
+
+</html>
+
+</html>
+
+</html>

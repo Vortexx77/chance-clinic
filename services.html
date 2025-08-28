@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/logo2.png" rel="icon">
+    <title>Our Services - CHANSE CLINIC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E3A8A',
+                        accent: '#3B82F6',
+                        dark: '#0F172A',
+                        green: '#4ade80',
+                        logoGreen: '#4ade80',
+                        logoBlue: '#2563EB'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    gradientColorStops: theme => ({
+                        ...theme('colors'),
+                        'logo': '#4ade80',
+                        'logo-blue': '#2563EB',
+                    })
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #4ade80 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .feature-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #4ade80, #2563EB);
+            backdrop-filter: blur(4px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 500;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover .feature-badge {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #4ade8010 0%, #2563EB10 100%);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stats-card:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234ade80' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .content-bg {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.03) 0%, rgba(74, 222, 128, 0.08) 100%);
+            backdrop-filter: blur(8px);
+        }
+        
+        .card-bg {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.95) 100%);
+            backdrop-filter: blur(8px);
+        }
+        
+        .section-bg {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.02) 0%, rgba(74, 222, 128, 0.05) 100%);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #4ade80, #2563EB);
+            border-radius: 3px;
+            transition: all 0.4s ease;
+        }
+        
+        .section-title:hover::after {
+            width: 100%;
+        }
+        
+        .service-info {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-info::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #2563EB, #1E40AF);
+            border-radius: 3px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-info::after {
+            opacity: 1;
+            bottom: -5px;
+        }
+        
+        .service-image {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+        
+        .bg-primary {
+            background-color: #2563EB !important;
+        }
+        
+        .bg-primary\/10 {
+            background-color: rgba(74, 222, 128, 0.1) !important;
+        }
+        
+        .bg-primary\/20 {
+            background-color: rgba(74, 222, 128, 0.2) !important;
+        }
+        
+        .bg-primary\/30 {
+            background-color: rgba(74, 222, 128, 0.3) !important;
+        }
+        
+        .bg-primary\/80 {
+            background-color: rgba(74, 222, 128, 0.8) !important;
+        }
+        
+        .bg-primary\/90 {
+            background-color: rgba(74, 222, 128, 0.9) !important;
+        }
+        
+        .bg-logoGreen {
+            background-color: #4ade80 !important;
+        }
+        
+        .text-primary {
+            color: #2563EB !important;
+        }
+        
+        .text-logoGreen {
+            color: #4ade80 !important;
+        }
+        
+        .border-primary {
+            border-color: #2563EB !important;
+        }
+        
+        .hover\:bg-primary:hover {
+            background-color: #4ade80 !important;
+        }
+        
+        .hover\:text-primary:hover {
+            color: #4ade80 !important;
+        }
+        
+        .service-card:hover {
+            box-shadow: 0 8px 32px 0 rgba(74, 222, 128, 0.15), 0 1.5px 4px 0 rgba(37, 99, 235, 0.10);
+        }
+        
+        .bg-primary.text-white:hover {
+            background-color: #4ade80 !important;
+            color: #fff !important;
+        }
+        
+        .stats-card {
+            border: 1.5px solid #4ade80;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-slideIn {
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Modal Styles */
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 1rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+            margin: auto;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .modal-header h2 {
+                font-size: 1.25rem;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.5rem;
+            }
+            .modal-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-footer button {
+                width: 100%;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0F172A;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6B7280;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #2563EB;
+        }
+        
+        .modal-body {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .modal-footer button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .modal-footer button.cancel {
+            background-color: #F3F4F6;
+            color: #374151;
+        }
+        
+        .modal-footer button.cancel:hover {
+            background-color: #E5E7EB;
+        }
+        
+        .modal-footer button.submit {
+            background-color: #2563EB;
+            color: white;
+        }
+        
+        .modal-footer button.submit:hover {
+            background-color: #1D4ED8;
+        }
+
+        /* Universal Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-200deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes flipInX {
+            from {
+                opacity: 0;
+                transform: perspective(400px) rotateX(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(400px) rotateX(0deg);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation Base Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+        }
+
+        /* Specific Animation Classes */
+        .fade-up {
+            transform: translateY(50px);
+        }
+
+        .fade-up.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-left {
+            transform: translateX(-50px);
+        }
+
+        .fade-left.visible {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-right {
+            transform: translateX(50px);
+        }
+
+        .fade-right.visible {
+            animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-scale {
+            transform: scale(0.8);
+        }
+
+        .fade-scale.visible {
+            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-bottom {
+            transform: translateY(100px);
+        }
+
+        .slide-bottom.visible {
+            animation: slideInFromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .bounce-in {
+            transform: scale(0.3);
+        }
+
+        .bounce-in.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .rotate-in {
+            transform: rotate(-200deg);
+        }
+
+        .rotate-in.visible {
+            animation: rotateIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .flip-x {
+            transform: perspective(400px) rotateX(90deg);
+        }
+
+        .flip-x.visible {
+            animation: flipInX 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .zoom-in {
+            transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        .zoom-in.visible {
+            animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-top {
+            transform: translateY(-100px);
+        }
+
+        .slide-top.visible {
+            animation: slideInFromTop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Staggered Animation Delays */
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-700 { animation-delay: 0.7s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+
+        /* Enhanced Stats Cards Animation */
+        .stats-card-animate {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .stats-card-animate.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Service Cards Animation */
+        .service-card-animate {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card-animate.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Footer Animations */
+        .footer-section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .footer-section-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Section Title Animations */
+        .section-title-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .section-subtitle-animate {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-subtitle-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Page Header Animation */
+        .page-header-content {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .page-header-content.visible {
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Animation for Important Elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+    <style>
+        /* WhatsApp and Back-to-Top Buttons */
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button,
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .back-to-top {
+            background-color: #4ade80;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .whatsapp-button:hover,
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
+                        <div class="flex flex-col">
+                            <div class="hidden lg:block">
+                                <span class="text-2xl font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                            </div>
+                            <div class="lg:hidden">
+                                <span class="text-sm sm:text-base md:text-lg font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S</span>
+                                <span class="text-sm sm:text-base md:text-lg font-bold text-primary block text-center">CLINIC</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-3 ml-4 lg:ml-20">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">About</a>
+                    <a href="services.html" class="text-primary font-medium text-sm lg:text-base">Services</a>
+                    <a href="doctors.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Doctors</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Contact</a>
+                    <a class="bg-primary text-white px-3 lg:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl book-appointment text-sm lg:text-base whitespace-nowrap">Book Appointment</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/40 hidden">
+            <div class="bg-white w-4/5 max-w-xs h-full shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col space-y-4 sm:space-y-6 absolute right-0 top-0 animate-slideIn">
+                <div>
+                    <div>
+                        <a href="index.html" class="flex items-center">
+                            <img src="img/logo2.png" alt="Clinic Logo" class="h-10 sm:h-12 w-auto mr-2" />
+                            <span class="text-base sm:text-lg font-bold text-primary">CHANSE CLINIC</span>
+                        </a>
+                        <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-400 hover:text-logoGreen text-2xl focus:outline-none">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <nav class="flex flex-col gap-3 sm:gap-4 mt-4">
+                            <a href="index.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Home</a>
+                            <a href="services.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Services</a>
+                            <a href="doctors.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Doctors</a>
+                            <a href="about.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">About</a>
+                            <a href="contact.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Contact</a>
+                        </nav>
+                        <a class="bg-primary text-white px-4 sm:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl mt-4 book-appointment text-sm sm:text-base block text-center">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <main class="content-bg pt-32">
+        <section class="section-bg">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="text-center page-header-content animate-on-scroll fade-up">
+                    <h1 class="text-5xl font-bold mb-6">Our <span class="gradient-text">Medical Services</span></h1>
+                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">Comprehensive healthcare services delivered with expertise and compassion.</p>
+                </div>
+                <!-- Stats Section -->
+                <div class="grid md:grid-cols-3 gap-8 mt-16">
+                    <div class="stats-card stats-card-animate rounded-2xl p-8 text-center animate-on-scroll bounce-in animate-delay-100">
+                        <div class="text-4xl font-bold text-primary mb-2">15+</div>
+                        <p class="text-gray-600">Specialized Services</p>
+                    </div>
+                    <div class="stats-card stats-card-animate rounded-2xl p-8 text-center animate-on-scroll bounce-in animate-delay-200">
+                        <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+                        <p class="text-gray-600">Emergency Care</p>
+                    </div>
+                    <div class="stats-card stats-card-animate rounded-2xl p-8 text-center animate-on-scroll bounce-in animate-delay-300">
+                        <div class="text-4xl font-bold text-primary mb-2">100%</div>
+                        <p class="text-gray-600">Patient Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Featured Services -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4 section-title section-title-animate block w-full animate-on-scroll fade-up">Our <span class="gradient-text">Featured Services</span></h2>
+            <p class="text-gray-600 text-center mb-16 max-w-3xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">Discover our comprehensive range of medical services designed to meet your healthcare needs.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Physician -->
+                <div class="service-card service-card-animate bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll fade-up animate-delay-100">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/s1.jpg" alt="Physician" class="w-full h-80 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="feature-badge">Featured</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 service-icon">
+                                <i class="fas fa-user-md text-logoGreen text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Physician</h3>
+                            <p class="text-gray-600 mb-4">Comprehensive medical care services including diagnostics, treatment, and preventive care.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Laboratory -->
+                <div class="service-card service-card-animate bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll fade-up animate-delay-200">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/s2.jpg" alt="Laboratory" class="w-full h-80 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="feature-badge">Featured</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 service-icon">
+                                <i class="fas fa-microscope text-logoGreen text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Laboratory</h3>
+                            <p class="text-gray-600 mb-4">Examination of body fluids, tissues, and organs to detect diseases and monitor health.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pediatrics -->
+                <div class="service-card service-card-animate bg-white rounded-2xl shadow-xl overflow-hidden animate-on-scroll fade-up animate-delay-300">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/s3.jpg" alt="Pediatrics" class="w-full h-80 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="feature-badge">Featured</div>
+                    </div>
+                    <div class="p-8">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 service-icon">
+                                <i class="fas fa-baby text-logoGreen text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Pediatrics</h3>
+                            <p class="text-gray-600 mb-4">Specialized care for children from birth through adolescence.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-4 section-title section-title-animate block w-full animate-on-scroll fade-up">More <span class="gradient-text">Services</span></h2>
+            <p class="text-gray-600 text-center mb-16 max-w-3xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">Explore our additional specialized medical services.</p>
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- General Medicine -->
+                <div class="service-card service-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-100">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/medicine1.jpg" alt="General Medicine" class="w-full h-48 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-4 service-icon">
+                                <i class="fas fa-stethoscope text-logoGreen text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">General Medicine</h3>
+                            <p class="text-gray-600 mb-4">General medical care for adults, including diagnosis and treatment of various conditions.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maternity -->
+                <div class="service-card service-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-200">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/maternity.jpg" alt="Maternity" class="w-full h-48 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-4 service-icon">
+                                <i class="fas fa-baby text-logoGreen text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Maternity</h3>
+                            <p class="text-gray-600 mb-4">Specialized care for pregnant women and their babies.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Immunization -->
+                <div class="service-card service-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-300">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/Immunization.jpg" alt="Immunization" class="w-full h-48 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-4 service-icon">
+                                <i class="fas fa-syringe text-logoGreen text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Immunization</h3>
+                            <p class="text-gray-600 mb-4">Vaccination and immunization services to protect against infectious diseases.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gynacology -->
+                <div class="service-card service-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-400">
+                    <div class="relative overflow-hidden">
+                        <img src="img/done/Gynacology.jpg" alt="Gynacology" class="w-full h-48 object-cover service-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="service-info">
+                            <div class="bg-primary/10 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-4 service-icon">
+                                <i class="fas fa-female text-logoGreen text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Gynacology</h3>
+                            <p class="text-gray-600 mb-4">Specialized care for women's reproductive health, including gynecological exams and treatments.</p>
+                            <a href="#" class="text-primary font-medium hover:text-blue-700 transition duration-300">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-100">
+                    <div class="flex items-center mb-6">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-32 w-auto mr-30 bg-white rounded-lg p-1" />
+                        <span class="text-2xl font-bold ml-1">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                    </div>
+                    <p class="text-gray-400">Providing quality healthcare services with compassion and excellence.</p>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-200">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="doctors.html" class="text-gray-400 hover:text-white transition duration-300">Doctors</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-300">
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Physician</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Labaratory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pediatric</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">General Medicine</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-400">
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates and health tips.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" name="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none bg-gray-800 text-white placeholder-gray-400">
+                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </form>
+                    <div id="newsletter-message" class="mt-2 text-sm hidden"></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+256759130250" target="_blank" class="whatsapp-button" title="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="back-to-top" title="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Appointment Form Modal -->
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book an Appointment</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" class="form-control">
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" class="form-control">
+                            <option value="">Select a service</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="dental">Dental Care</option>
+                            <option value="emergency">Emergency Care</option>
+                        </select>
+                        <span class="error-message text-red-500 text-sm hidden"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel">Cancel</button>
+                <button class="submit">Book Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global modal functions
+        function openAppointmentModal() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            appointmentModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAppointmentModal() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            const appointmentForm = document.getElementById('appointment-form');
+            appointmentModal.classList.remove('active');
+            document.body.style.overflow = '';
+            appointmentForm.reset();
+            // Clear error messages and styling using vanilla JavaScript
+            const errorMessages = document.querySelectorAll('.error-message');
+            const errorFields = document.querySelectorAll('.error');
+            errorMessages.forEach(el => {
+                el.classList.remove('visible');
+                el.textContent = '';
+            });
+            errorFields.forEach(el => {
+                el.classList.remove('error');
+            });
+        }
+
+        // Show notification function (global scope)
+        function showNotification(type, message) {
+            // Remove existing notifications
+            $('.notification').remove();
+
+            const notification = $(`
+                <div class="notification ${type}" style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    border-radius: 5px;
+                    color: white;
+                    font-weight: 500;
+                    z-index: 10000;
+                    max-width: 400px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    ${type === 'success' ? 'background-color: #10b981;' : ''}
+                    ${type === 'error' ? 'background-color: #ef4444;' : ''}
+                    ${type === 'info' ? 'background-color: #3b82f6;' : ''}
+                ">
+                    ${message}
+                </div>
+            `);
+
+            $('body').append(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.fadeOut(300, function() {
+                    $(this).remove();
+                });
+            }, 5000);
+        }
+
+        // Appointment Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            const appointmentForm = document.getElementById('appointment-form');
+            const modalClose = appointmentModal.querySelector('.modal-close');
+            const cancelBtn = appointmentModal.querySelector('.cancel');
+            const submitBtn = appointmentModal.querySelector('.submit');
+            const bookAppointmentBtns = document.querySelectorAll('.book-appointment');
+
+            // Add click event listeners to all book appointment buttons
+            bookAppointmentBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openAppointmentModal();
+                });
+            });
+
+            modalClose.addEventListener('click', closeAppointmentModal);
+            cancelBtn.addEventListener('click', closeAppointmentModal);
+            appointmentModal.addEventListener('click', e => {
+                if (e.target === appointmentModal) closeAppointmentModal();
+            });
+
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && appointmentModal.classList.contains('active')) {
+                    closeAppointmentModal();
+                }
+            });
+        });
+
+        // Hamburger/mobile menu logic
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+        mobileMenuToggle.addEventListener('click', openMobileMenu);
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        mobileMenu.addEventListener('click', e => {
+            if (e.target === mobileMenu) closeMobileMenu();
+        });
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        // Close on ESC
+        window.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+
+        // Back to Top Button Functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        $(document).ready(function() {
+            // Add error styling
+            $('<style>')
+                .text(`
+                    .error {
+                        border-color: #EF4444 !important;
+                        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+                    }
+                    .error-message {
+                        display: none;
+                        margin-top: 0.25rem;
+                    }
+                    .error-message.visible {
+                        display: block;
+                    }
+                `)
+                .appendTo('head');
+
+            // ===== APPOINTMENT FORM VALIDATION =====
+            const appointmentForm = $('#appointment-form');
+            const submitBtn = $('.submit');
+
+            // Validation rules for appointment form
+            const validationRules = {
+                name: {
+                    required: true,
+                    minlength: 2,
+                    message: 'Please enter your full name'
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    message: 'Please enter a valid email address'
+                },
+                phone: {
+                    required: true,
+                    pattern: /^[0-9+\-\s()]{10,}$/,
+                    message: 'Please enter a valid phone number'
+                },
+                date: {
+                    required: true,
+                    message: 'Please select a preferred date'
+                },
+                time: {
+                    required: true,
+                    message: 'Please select a preferred time'
+                },
+                service_type: {
+                    required: true,
+                    message: 'Please select a service'
+                },
+                service: {
+                    required: true,
+                    message: 'Please select a service'
+                },
+                notes: {
+                    required: false,
+                    message: 'Additional notes are optional'
+                }
+            };
+
+            // Real-time validation for appointment form
+            appointmentForm.find('input, select, textarea').on('blur', function() {
+                validateField($(this));
+            });
+
+            // Validate single appointment field
+            function validateField(field) {
+                const fieldName = field.attr('name');
+                const fieldValue = field.val();
+                const rules = validationRules[fieldName];
+                const errorElement = field.siblings('.error-message');
+
+                field.removeClass('error');
+                errorElement.removeClass('visible').text('');
+
+                // Safety check - if no rules defined, skip validation
+                if (!rules) {
+                    return true;
+                }
+
+                if (rules.required && !fieldValue) {
+                    showError(field, errorElement, rules.message);
+                    return false;
+                }
+
+                if (fieldValue) {
+                    if (rules.email && !isValidEmail(fieldValue)) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    if (rules.pattern && !rules.pattern.test(fieldValue)) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    if (rules.minlength && fieldValue.length < rules.minlength) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
+            // Show error
+            function showError(field, errorElement, message) {
+                field.addClass('error');
+                errorElement.text(message).addClass('visible');
+            }
+
+            // Email validation helper
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // Appointment form submission
+            submitBtn.on('click', function(e) {
+                e.preventDefault();
+
+                // Debug: Check what fields are found
+                console.log('Form fields found:');
+                appointmentForm.find('input, select, textarea').each(function() {
+                    const field = $(this);
+                    console.log('Field:', field.attr('name'), 'Value:', field.val());
+                });
+
+                let isValid = true;
+
+                // Validate all fields
+                appointmentForm.find('input, select, textarea').each(function() {
+                    if (!validateField($(this))) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Show loading state
+                    submitBtn.prop('disabled', true).text('Booking...');
+
+                    // Collect form data
+                    const formData = {
+                        name: $('#name').val(),
+                        email: $('#email').val(),
+                        phone: $('#phone').val(),
+                        date: $('#date').val(),
+                        time: $('#time').val(),
+                        service_type: $('#service').val(),
+                        notes: $('#notes').val()
+                    };
+
+                    // Debug: Log the form data
+                    console.log('Form data being sent:', formData);
+                    console.log('JSON string:', JSON.stringify(formData));
+
+                    // Send to backend
+                    fetch('backend/routes/appointment.php?action=book', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                showNotification('success', data.message || 'Appointment booked successfully!');
+                                closeAppointmentModal();
+                                appointmentForm[0].reset();
+                            } else {
+                                showNotification('error', data.message || 'Failed to book appointment. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            showNotification('error', 'Network error. Please check your connection and try again.');
+                        })
+                        .finally(() => {
+                            // Reset button state
+                            submitBtn.prop('disabled', false).text('Book Appointment');
+                        });
+                }
+            });
+
+            // Newsletter form validation
+            $('#newsletter-form').on('submit', function(e) {
+                e.preventDefault();
+                const emailField = $(this).find('input[name="email"]');
+                const messageDiv = $(this).siblings('#newsletter-message');
+                const email = emailField.val().trim();
+
+                // Clear previous messages
+                messageDiv.removeClass('text-green-500 text-red-500').addClass('hidden');
+                emailField.removeClass('error');
+                emailField.siblings('.error-message').removeClass('visible').text('');
+
+                if (!isValidEmail(email)) {
+                    showError(emailField, emailField.siblings('.error-message'), 'Please enter a valid email address');
+                    return false;
+                }
+
+                const submitBtn = $(this).find('button[type="submit"]');
+                const originalText = submitBtn.html();
+                submitBtn.html('<i class="fas fa-spinner fa-spin"></i>').prop('disabled', true);
+
+                fetch('backend/routes/newsletter.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            action: 'subscribe',
+                            email: email,
+                            source: 'website'
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showNotification('success', data.message || 'Thank you for subscribing!');
+                            this.reset();
+                        } else {
+                            showNotification('error', data.message || 'Failed to subscribe. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Newsletter subscription error:', error);
+                        showNotification('error', 'An error occurred. Please try again.');
+                    })
+                    .finally(() => {
+                        submitBtn.html(originalText).prop('disabled', false);
+                    });
+            });
+
+            // ===== SCROLL-TRIGGERED ANIMATIONS =====
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Unobserve after animation to improve performance
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animation classes
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize animations on page load for elements already in view
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isInView) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

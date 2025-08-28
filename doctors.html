@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/logo2.png" rel="icon">
+    <title>Our Doctors - CHANSE CLINIC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB',
+                        secondary: '#1E3A8A',
+                        accent: '#3B82F6',
+                        dark: '#0F172A',
+                        green: '#22C55E',
+                        logoGreen: '#22C55E',
+                        logoBlue: '#2563EB'
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    gradientColorStops: theme => ({
+                        ...theme('colors'),
+                        'logo': '#22C55E',
+                        'logo-blue': '#2563EB',
+                    })
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #22C55E 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .doctor-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .doctor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .doctor-card:hover::before {
+            opacity: 1;
+        }
+        
+        .doctor-image {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .doctor-card:hover .doctor-image {
+            transform: scale(1.1);
+        }
+        
+        .social-links {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .doctor-card:hover .social-links {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .specialty-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(90deg, #22C55E, #2563EB);
+            backdrop-filter: blur(4px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: 500;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .doctor-card:hover .specialty-badge {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #22C55E10 0%, #2563EB10 100%);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stats-card:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #22C55E, #2563EB);
+            border-radius: 3px;
+            transition: all 0.4s ease;
+        }
+        
+        .section-title:hover::after {
+            width: 100%;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .doctor-info {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .doctor-info::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #2563EB, #1E40AF);
+            border-radius: 3px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .doctor-card:hover .doctor-info::after {
+            opacity: 1;
+            bottom: -5px;
+        }
+        
+        .bg-primary,
+        .bg-primary\/10,
+        .bg-primary\/80,
+        .bg-primary\/90,
+        .bg-primary\/20,
+        .bg-primary\/30 {
+            background-color: #2563EB !important;
+        }
+        
+        .bg-logoGreen {
+            background-color: #22C55E !important;
+        }
+        
+        .text-primary {
+            color: #2563EB !important;
+        }
+        
+        .text-logoGreen {
+            color: #22C55E !important;
+        }
+        
+        .border-primary {
+            border-color: #2563EB !important;
+        }
+        
+        .hover\:bg-primary:hover {
+            background-color: #22C55E !important;
+        }
+        
+        .hover\:text-primary:hover {
+            color: #22C55E !important;
+        }
+        
+        .doctor-card:hover {
+            box-shadow: 0 8px 32px 0 rgba(34, 197, 94, 0.15), 0 1.5px 4px 0 rgba(37, 99, 235, 0.10);
+        }
+        
+        .bg-primary\/10 {
+            background-color: rgba(34, 197, 94, 0.1) !important;
+        }
+        
+        .bg-primary\/20 {
+            background-color: rgba(34, 197, 94, 0.2) !important;
+        }
+        
+        .bg-primary\/30 {
+            background-color: rgba(34, 197, 94, 0.3) !important;
+        }
+        
+        .bg-primary\/80 {
+            background-color: rgba(34, 197, 94, 0.8) !important;
+        }
+        
+        .bg-primary\/90 {
+            background-color: rgba(34, 197, 94, 0.9) !important;
+        }
+        
+        .bg-primary.text-white:hover {
+            background-color: #22C55E !important;
+            color: #fff !important;
+        }
+        
+        .stats-card {
+            border: 1.5px solid #22C55E;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        .animate-slideIn {
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Mobile Menu Styles */
+        
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #mobile-menu.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        #mobile-menu .mobile-menu-content {
+            width: 80vw;
+            max-width: 350px;
+            height: 100%;
+            background-color: white;
+            position: fixed;
+            right: 0;
+            top: 0;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 1rem 0 0 1rem;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #mobile-menu.active .mobile-menu-content {
+            transform: translateX(0);
+        }
+        /* Modal Styles */
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 1rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+            margin: auto;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .modal-header h2 {
+                font-size: 1.25rem;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.5rem;
+            }
+            .modal-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-footer button {
+                width: 100%;
+            }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0F172A;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6B7280;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #2563EB;
+        }
+        
+        .modal-body {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .modal-footer button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .modal-footer button.cancel {
+            background-color: #F3F4F6;
+            color: #374151;
+        }
+        
+        .modal-footer button.cancel:hover {
+            background-color: #E5E7EB;
+        }
+        
+        .modal-footer button.submit {
+            background-color: #2563EB;
+            color: white;
+        }
+        
+        .modal-footer button.submit:hover {
+            background-color: #1D4ED8;
+        }
+
+        /* Universal Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-200deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes flipInX {
+            from {
+                opacity: 0;
+                transform: perspective(400px) rotateX(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(400px) rotateX(0deg);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            50% {
+                opacity: 1;
+            }
+            to {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation Base Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+        }
+
+        /* Specific Animation Classes */
+        .fade-up {
+            transform: translateY(50px);
+        }
+
+        .fade-up.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-left {
+            transform: translateX(-50px);
+        }
+
+        .fade-left.visible {
+            animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-right {
+            transform: translateX(50px);
+        }
+
+        .fade-right.visible {
+            animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .fade-scale {
+            transform: scale(0.8);
+        }
+
+        .fade-scale.visible {
+            animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-bottom {
+            transform: translateY(100px);
+        }
+
+        .slide-bottom.visible {
+            animation: slideInFromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .bounce-in {
+            transform: scale(0.3);
+        }
+
+        .bounce-in.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .rotate-in {
+            transform: rotate(-200deg);
+        }
+
+        .rotate-in.visible {
+            animation: rotateIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .flip-x {
+            transform: perspective(400px) rotateX(90deg);
+        }
+
+        .flip-x.visible {
+            animation: flipInX 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .zoom-in {
+            transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        .zoom-in.visible {
+            animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-top {
+            transform: translateY(-100px);
+        }
+
+        .slide-top.visible {
+            animation: slideInFromTop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Staggered Animation Delays */
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+        .animate-delay-500 { animation-delay: 0.5s; }
+        .animate-delay-600 { animation-delay: 0.6s; }
+        .animate-delay-700 { animation-delay: 0.7s; }
+        .animate-delay-800 { animation-delay: 0.8s; }
+
+        /* Enhanced Stats Cards Animation */
+        .stats-card-animate {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .stats-card-animate.visible {
+            animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Doctor Cards Animation */
+        .doctor-card-animate {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .doctor-card-animate.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Footer Animations */
+        .footer-section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .footer-section-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Section Title Animations */
+        .section-title-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section-title-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .section-subtitle-animate {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .section-subtitle-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Page Header Animation */
+        .page-header-content {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .page-header-content.visible {
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Floating Elements Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Pulse Animation for Important Elements */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+    <style>
+        /* WhatsApp and Back-to-Top Buttons */
+        
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-button,
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .back-to-top {
+            background-color: #4ade80;
+            color: white;
+            font-size: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .whatsapp-button:hover,
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="font-poppins bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
+                        <div class="flex flex-col">
+                            <div class="hidden lg:block">
+                                <span class="text-2xl font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                            </div>
+                            <div class="lg:hidden">
+                                <span class="text-sm sm:text-base md:text-lg font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S</span>
+                                <span class="text-sm sm:text-base md:text-lg font-bold text-primary block text-center">CLINIC</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-2 lg:space-x-3 ml-4 lg:ml-20">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">About</a>
+                    <a href="services.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Services</a>
+                    <a href="doctors.html" class="text-primary font-medium text-sm lg:text-base">Doctors</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Contact</a>
+                    <a class="bg-primary text-white px-3 lg:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl book-appointment text-sm lg:text-base whitespace-nowrap">Book Appointment</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-toggle" class="text-gray-700 hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/40 hidden">
+            <div class="bg-white w-4/5 max-w-xs h-full shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col space-y-4 sm:space-y-6 absolute right-0 top-0 animate-slideIn">
+                <div>
+                    <div>
+                        <a href="index.html" class="flex items-center">
+                            <img src="img/logo2.png" alt="Clinic Logo" class="h-10 sm:h-12 w-auto mr-2" />
+                            <span class="text-base sm:text-lg font-bold text-primary">CHANSE CLINIC</span>
+                        </a>
+                        <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-400 hover:text-logoGreen text-2xl focus:outline-none">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <nav class="flex flex-col gap-3 sm:gap-4 mt-4">
+                            <a href="index.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Home</a>
+                            <a href="services.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Services</a>
+                            <a href="doctors.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Doctors</a>
+                            <a href="about.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">About</a>
+                            <a href="contact.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Contact</a>
+                        </nav>
+                        <a class="bg-primary text-white px-4 sm:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl mt-4 book-appointment text-sm sm:text-base block text-center">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 hero-pattern">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center page-header-content animate-on-scroll fade-up">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Meet Our <span class="gradient-text">Doctors</span></h1>
+                <p class="text-gray-600 text-base sm:text-lg max-w-3xl mx-auto">Our team of experienced medical professionals is dedicated to providing the best healthcare services.</p>
+            </div>
+            <!-- Stats Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-8 sm:mt-12 md:mt-16">
+                <div class="stats-card stats-card-animate rounded-2xl p-6 sm:p-8 text-center animate-on-scroll bounce-in animate-delay-100">
+                    <div class="text-3xl sm:text-4xl font-bold text-primary mb-2">5+</div>
+                    <p class="text-gray-600 text-sm sm:text-base">Expert Doctors</p>
+                </div>
+                <div class="stats-card stats-card-animate rounded-2xl p-6 sm:p-8 text-center animate-on-scroll bounce-in animate-delay-200">
+                    <div class="text-3xl sm:text-4xl font-bold text-primary mb-2">5+</div>
+                    <p class="text-gray-600 text-sm sm:text-base">Specialists</p>
+                </div>
+                <div class="stats-card stats-card-animate rounded-2xl p-6 sm:p-8 text-center animate-on-scroll bounce-in animate-delay-300">
+                    <div class="text-3xl sm:text-4xl font-bold text-primary mb-2">98%</div>
+                    <p class="text-gray-600 text-sm sm:text-base">Patient Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Doctors -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="w-full flex justify-center"><h2 class="text-4xl font-bold text-center mb-4 section-title section-title-animate animate-on-scroll fade-up">Our <span class="gradient-text">Specialists</span></h2></div>
+            <p class="text-gray-600 text-center mb-16 max-w-3xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">Meet our team of experienced medical professionals dedicated to your health and well-being.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Dr. Christopher Nsereko -->
+                <div class="doctor-card doctor-card-animate group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 animate-on-scroll fade-up animate-delay-100">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/DrCris2.jpg" alt="Dr. Christopher Nsereko" class="w-full h-80 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="specialty-badge">Physician</div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="doctor-info">
+                            <h3 class="text-2xl font-bold mb-2">Dr. Christopher Nsereko</h3>
+                            <p class="text-gray-600 mb-4">Physician</p>
+                        </div>
+                        <div class="social-links flex space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr. Kevin Nandawula -->
+                <div class="doctor-card doctor-card-animate group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 animate-on-scroll fade-up animate-delay-200">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/DrKevin1.jpg" alt="Dr. Kevin Nandawula" class="w-full h-80 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="specialty-badge">General Doctor</div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="doctor-info">
+                            <h3 class="text-2xl font-bold mb-2">Dr. Kevin Nandawula</h3>
+                            <p class="text-gray-600 mb-4">General Doctor</p>
+                        </div>
+                        <div class="social-links flex space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dr. Katongole Ben -->
+                <div class="doctor-card doctor-card-animate group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 animate-on-scroll fade-up animate-delay-300">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/doc3.jpg" alt="Dr. Katongole Ben" class="w-full h-80 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="specialty-badge">Pediatrician</div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="doctor-info">
+                            <h3 class="text-2xl font-bold mb-2">Dr. Katongole Ben</h3>
+                            <p class="text-gray-600 mb-4">Pediatrician</p>
+                        </div>
+                        <div class="social-links flex space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dr. kissa stephen -->
+                <div class="doctor-card doctor-card-animate group bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 animate-on-scroll fade-up animate-delay-400">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/doc3.jpg" alt="Dr. kissa Stephen" class="w-full h-80 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="specialty-badge">Clinical Officer</div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="doctor-info">
+                            <h3 class="text-2xl font-bold mb-2">Dr. kissa Stephen</h3>
+                            <p class="text-gray-600 mb-4">Clinical Officer</p>
+                        </div>
+                        <div class="social-links flex space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Specialists -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="w-full flex justify-center"><h2 class="text-4xl font-bold text-center mb-4 section-title section-title-animate animate-on-scroll fade-up">More <span class="gradient-text">Staff Members</span></h2></div>
+            <p class="text-gray-600 text-center mb-16 max-w-3xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">Our team includes specialists across various medical fields to provide comprehensive care.</p>
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Dr. Nsiimamukama Matthew -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-100">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Dr. James Wilson" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Dr. Nsiimamukama Matthew</h3>
+                            <p class="text-gray-600 mb-4">General Doctor</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Angella Namuyomba -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-200">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/Angella.JPG" alt="Angella Namuyomba" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Angella Namuyomba</h3>
+                            <p class="text-gray-600 mb-4">Midwife</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amina Sinyooma -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-300">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/Amina.JPG" alt="Amina Sinyooma" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Amina Sinyooma</h3>
+                            <p class="text-gray-600 mb-4">Nurse</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookey Jewel Pearl -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-400">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cookey Jewel Pearl" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Cookey Jewel Pearl</h3>
+                            <p class="text-gray-600 mb-4">Nurse</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ayinembabazi Catherine -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-500">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ayinembabazi Catherine" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Ayinembabazi Catherine</h3>
+                            <p class="text-gray-600 mb-4">Lab Technician</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Najjemba Aisha Sasha -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-600">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Najjemba Aisha Sasha" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Najjemba Aisha Sasha</h3>
+                            <p class="text-gray-600 mb-4">Lab Technician</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Muhumuza Desire Fred -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-700">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Muhumuza Desire Fred" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Muhumuza Desire Fred</h3>
+                            <p class="text-gray-600 mb-4">Lab Technician</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nabukenya Joanita -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-800">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Nabukenya Joanita" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Nabukenya Joanita</h3>
+                            <p class="text-gray-600 mb-4">Accountant</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Gloria Nassuna -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-100">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="img/done/Gloria.JPG" alt="Gloria Nassuna" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Gloria Nassuna</h3>
+                            <p class="text-gray-600 mb-4">Receptionist</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Otim Moses -->
+                <div class="doctor-card doctor-card-animate bg-white rounded-xl shadow-lg overflow-hidden animate-on-scroll fade-up animate-delay-200">
+                    <div class="relative overflow-hidden h-80">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Otim Moses" class="w-full h-48 object-cover doctor-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="doctor-info">
+                            <h3 class="text-xl font-bold mb-2">Otim Moses</h3>
+                            <p class="text-gray-600 mb-4">Askari</p>
+                        </div>
+                        <div class="social-links flex justify-center space-x-4">
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="social-icon text-gray-400 hover:text-primary">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-100">
+                    <div class="flex items-center mb-6">
+                        <img src="img/logo2.png" alt="Clinic Logo" class="h-32 w-auto mr-30 bg-white rounded-lg p-1" />
+                        <span class="text-2xl font-bold ml-3">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                    </div>
+                    <p class="text-gray-400">Providing quality healthcare services with compassion and excellence.</p>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-200">
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="doctors.html" class="text-gray-400 hover:text-white transition duration-300">Doctors</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-300">
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Physician</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Labaratory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pediatric</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">General Medicine</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section-animate animate-on-scroll fade-up animate-delay-400">
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to our newsletter for updates and health tips.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" name="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg w-full focus:outline-none bg-gray-800 text-white placeholder-gray-400" required>
+                        <button type="submit" class="bg-primary px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div id="newsletter-message" class="mt-2 text-sm hidden"></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/+256759130250" target="_blank" class="whatsapp-button" title="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="back-to-top" title="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Appointment Form Modal -->
+    <div id="appointment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book an Appointment</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" min="">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="dental">Dental Care</option>
+                            <option value="emergency">Emergency Care</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" name="notes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel">Cancel</button>
+                <button class="submit">Book Appointment</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global modal functions
+        function openAppointmentModal() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            appointmentModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAppointmentModal() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            const appointmentForm = document.getElementById('appointment-form');
+            appointmentModal.classList.remove('active');
+            document.body.style.overflow = '';
+            appointmentForm.reset();
+            // Clear error messages and styling using vanilla JavaScript
+            const errorMessages = document.querySelectorAll('.error-message');
+            const errorFields = document.querySelectorAll('.error');
+            errorMessages.forEach(el => {
+                el.classList.remove('visible');
+                el.textContent = '';
+            });
+            errorFields.forEach(el => {
+                el.classList.remove('error');
+            });
+        }
+
+        // Show notification function (global scope)
+        function showNotification(type, message) {
+            // Remove existing notifications
+            $('.notification').remove();
+
+            const notification = $(`
+                <div class="notification ${type}" style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 15px 20px;
+                    border-radius: 5px;
+                    color: white;
+                    font-weight: 500;
+                    z-index: 10000;
+                    max-width: 400px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    ${type === 'success' ? 'background-color: #10b981;' : ''}
+                    ${type === 'error' ? 'background-color: #ef4444;' : ''}
+                    ${type === 'info' ? 'background-color: #3b82f6;' : ''}
+                ">
+                    ${message}
+                </div>
+            `);
+
+            $('body').append(notification);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.fadeOut(300, function() {
+                    $(this).remove();
+                });
+            }, 5000);
+        }
+
+        // Appointment Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const appointmentModal = document.getElementById('appointment-modal');
+            const modalClose = appointmentModal.querySelector('.modal-close');
+            const cancelBtn = appointmentModal.querySelector('.cancel');
+            const bookAppointmentBtns = document.querySelectorAll('.book-appointment');
+
+            // Set minimum date to today
+            const dateInput = document.getElementById('date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+
+            // Add click event listeners to all book appointment buttons
+            bookAppointmentBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openAppointmentModal();
+                });
+            });
+
+            modalClose.addEventListener('click', closeAppointmentModal);
+            cancelBtn.addEventListener('click', closeAppointmentModal);
+            appointmentModal.addEventListener('click', e => {
+                if (e.target === appointmentModal) closeAppointmentModal();
+            });
+
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && appointmentModal.classList.contains('active')) {
+                    closeAppointmentModal();
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            // Add error styling
+            $('<style>')
+                .text(`
+                    .error {
+                        border-color: #EF4444 !important;
+                        background-color: #FEF2F2 !important;
+                    }
+                    .error-message {
+                        color: #EF4444;
+                        font-size: 0.875rem;
+                        margin-top: 0.25rem;
+                        display: block;
+                    }
+                    .form-group {
+                        margin-bottom: 1.5rem;
+                    }
+                `)
+                .appendTo('head');
+
+            // ===== APPOINTMENT FORM VALIDATION =====
+            const appointmentForm = $('#appointment-form');
+            const submitBtn = $('.submit');
+
+            // Validation rules for appointment form
+            const validationRules = {
+                name: {
+                    required: true,
+                    minlength: 2,
+                    message: 'Please enter your full name'
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    message: 'Please enter a valid email address'
+                },
+                phone: {
+                    required: true,
+                    pattern: /^[\+]?[0-9\s\-\(\)]{10,}$/,
+                    message: 'Please enter a valid phone number'
+                },
+                date: {
+                    required: true,
+                    message: 'Please select a preferred date'
+                },
+                time: {
+                    required: true,
+                    message: 'Please select a preferred time'
+                },
+                service: {
+                    required: true,
+                    message: 'Please select a service'
+                },
+                notes: {
+                    required: false,
+                    message: 'Additional notes are optional'
+                }
+            };
+
+            // Real-time validation for appointment form
+            appointmentForm.find('input, select, textarea').on('blur', function() {
+                validateField($(this));
+            });
+
+            // Validate single appointment field
+            function validateField(field) {
+                const fieldName = field.attr('name');
+                const fieldValue = field.val();
+                const rules = validationRules[fieldName];
+                const errorElement = field.siblings('.error-message');
+
+                field.removeClass('error');
+                errorElement.removeClass('visible').text('');
+
+                // Safety check - if no rules defined, skip validation
+                if (!rules) {
+                    return true;
+                }
+
+                if (rules.required && !fieldValue) {
+                    showError(field, errorElement, rules.message);
+                    return false;
+                }
+
+                if (fieldValue) {
+                    if (rules.email && !isValidEmail(fieldValue)) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    if (rules.pattern && !rules.pattern.test(fieldValue)) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    if (rules.minlength && fieldValue.length < rules.minlength) {
+                        showError(field, errorElement, rules.message);
+                        return false;
+                    }
+                    // Custom date validation
+                    if (fieldName === 'date') {
+                        const selectedDate = new Date(fieldValue);
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        if (selectedDate < today) {
+                            showError(field, errorElement, 'Please select a future date');
+                            return false;
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            // Show error
+            function showError(field, errorElement, message) {
+                field.addClass('error');
+                errorElement.text(message).addClass('visible');
+            }
+
+            // Email validation helper
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // Appointment form submission
+            submitBtn.on('click', function(e) {
+                e.preventDefault();
+
+                // Debug: Check what fields are found
+                console.log('Form fields found:');
+                appointmentForm.find('input, select, textarea').each(function() {
+                    const field = $(this);
+                    console.log('Field:', field.attr('name'), 'Value:', field.val());
+                });
+
+                let isValid = true;
+
+                // Validate all fields
+                appointmentForm.find('input, select, textarea').each(function() {
+                    if (!validateField($(this))) {
+                        isValid = false;
+                    }
+                });
+
+                if (isValid) {
+                    // Show loading state
+                    submitBtn.prop('disabled', true).text('Booking...');
+
+                    // Collect form data
+                    const formData = {
+                        name: $('#name').val(),
+                        email: $('#email').val(),
+                        phone: $('#phone').val(),
+                        date: $('#date').val(),
+                        time: $('#time').val(),
+                        service: $('#service').val(),
+                        service_type: $('#service').val(),
+                        notes: $('#notes').val()
+                    };
+
+                    // Debug: Log the form data
+                    console.log('Form data being sent:', formData);
+                    console.log('JSON string:', JSON.stringify(formData));
+
+                    // Send to backend
+                    fetch('backend/routes/appointment.php?action=book', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData)
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                showNotification('success', data.message || 'Appointment booked successfully!');
+                                closeAppointmentModal();
+                            } else {
+                                showNotification('error', data.message || 'Failed to book appointment. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            showNotification('error', 'Network error. Please check your connection and try again.');
+                        })
+                        .finally(() => {
+                            // Reset button state
+                            submitBtn.prop('disabled', false).text('Book Appointment');
+                        });
+                }
+            });
+
+            // --- NEWSLETTER FORM ---
+            $('#newsletter-form').on('submit', function(e) {
+                e.preventDefault();
+                const emailField = $(this).find('input[name="email"]');
+                const messageDiv = $('#newsletter-message');
+                const email = emailField.val().trim();
+
+                messageDiv.removeClass('text-green-500 text-red-500').addClass('hidden');
+
+                if (!isValidEmail(email)) {
+                    messageDiv.text('Please enter a valid email address').removeClass('hidden').addClass('text-red-500');
+                    return false;
+                }
+
+                const submitBtn = $(this).find('button[type="submit"]');
+                const originalText = submitBtn.html();
+                submitBtn.html('<i class="fas fa-spinner fa-spin"></i>').prop('disabled', true);
+
+                fetch('backend/routes/newsletter.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            action: 'subscribe',
+                            email: email,
+                            source: 'website'
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            messageDiv.text(data.message).removeClass('hidden').addClass('text-green-500');
+                            this.reset();
+                        } else {
+                            messageDiv.text(data.message).removeClass('hidden').addClass('text-red-500');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Newsletter subscription error:', error);
+                        messageDiv.text('An error occurred. Please try again.').removeClass('hidden').addClass('text-red-500');
+                    })
+                    .finally(() => {
+                        submitBtn.html(originalText).prop('disabled', false);
+                    });
+            });
+
+            // Mobile Menu Functionality
+            $('#mobile-menu-toggle').on('click', function() {
+                $('#mobile-menu').removeClass('hidden').addClass('active');
+                $('body').css('overflow', 'hidden');
+            });
+
+            $('#mobile-menu-close').on('click', function() {
+                $('#mobile-menu').addClass('hidden').removeClass('active');
+                $('body').css('overflow', '');
+            });
+
+            $('#mobile-menu').on('click', function(e) {
+                if (e.target === this) {
+                    $(this).addClass('hidden').removeClass('active');
+                    $('body').css('overflow', '');
+                }
+            });
+
+            // Close mobile menu on link click
+            $('#mobile-menu a').on('click', function() {
+                $('#mobile-menu').addClass('hidden').removeClass('active');
+                $('body').css('overflow', '');
+            });
+
+            // Back to Top Button Functionality
+            $(window).on('scroll', function() {
+                if ($(window).scrollTop() > 300) {
+                    $('.back-to-top').addClass('visible');
+                } else {
+                    $('.back-to-top').removeClass('visible');
+                }
+            });
+
+            $('.back-to-top').on('click', function() {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 'smooth');
+            });
+
+            // ===== SCROLL ANIMATIONS =====
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Unobserve the element after animation to improve performance
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with animation classes
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Initialize animations for elements already in viewport
+            const checkInitialVisibility = () => {
+                animatedElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (isVisible) {
+                        el.classList.add('visible');
+                        observer.unobserve(el);
+                    }
+                });
+            };
+
+            // Check initial visibility after page load
+            setTimeout(checkInitialVisibility, 100);
+        });
+    </script>
+</body>
+
+</html>
