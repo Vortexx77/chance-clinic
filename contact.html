@@ -36,6 +36,10 @@
         }
     </script>
     <style>
+               html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
         .gradient-text {
             background: linear-gradient(135deg, #22C55E 0%, #2563EB 100%);
             -webkit-background-clip: text;
@@ -255,156 +259,6 @@
         
         .animate-slideIn {
             animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .modal {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-            padding: 1rem;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-            padding: 1.5rem;
-            transform: translateY(-20px);
-            transition: transform 0.3s;
-            margin: auto;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-header h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #0F172A;
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #6B7280;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .modal-close:hover {
-            color: #2563EB;
-        }
-        
-        .modal-body {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #374151;
-        }
-        
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #D1D5DB;
-            border-radius: 0.375rem;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #2563EB;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-        
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.5rem;
-        }
-        
-        .modal-footer button {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .modal-footer button.cancel {
-            background-color: #F3F4F6;
-            color: #374151;
-        }
-        
-        .modal-footer button.cancel:hover {
-            background-color: #E5E7EB;
-        }
-        
-        .modal-footer button.submit {
-            background-color: #2563EB;
-            color: white;
-        }
-        
-        .modal-footer button.submit:hover {
-            background-color: #1D4ED8;
-        }
-        
-        @media (max-width: 640px) {
-            .modal-content {
-                padding: 1rem;
-                margin: 0.5rem;
-            }
-            .modal-header h2 {
-                font-size: 1.25rem;
-            }
-            .form-group input,
-            .form-group select {
-                padding: 0.5rem;
-            }
-            .modal-footer {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .modal-footer button {
-                width: 100%;
-            }
         }
 
         /* Universal Animation Classes */
@@ -629,7 +483,7 @@
         .animate-delay-700 { animation-delay: 0.7s; }
         .animate-delay-800 { animation-delay: 0.8s; }
 
-        /* Enhanced Contact Cards Animation */
+        /* Contact Page Specific Animations */
         .contact-card-animate {
             opacity: 0;
             transform: translateY(30px) scale(0.9);
@@ -639,27 +493,24 @@
             animation: bounceIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        /* Form Animation */
-        .form-animate {
+        .form-section-animate {
             opacity: 0;
             transform: translateX(-50px);
         }
 
-        .form-animate.visible {
+        .form-section-animate.visible {
             animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        /* Map Animation */
-        .map-animate {
+        .map-section-animate {
             opacity: 0;
-            transform: scale(0.8);
+            transform: translateY(50px);
         }
 
-        .map-animate.visible {
-            animation: fadeInScale 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        .map-section-animate.visible {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        /* Footer Animations */
         .footer-section-animate {
             opacity: 0;
             transform: translateY(30px);
@@ -669,7 +520,6 @@
             animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
 
-        /* Section Title Animations */
         .section-title-animate {
             opacity: 0;
             transform: translateY(30px);
@@ -689,7 +539,6 @@
             animation-delay: 0.2s;
         }
 
-        /* Page Header Animation */
         .page-header-content {
             opacity: 0;
             transform: translateY(50px);
@@ -697,18 +546,6 @@
 
         .page-header-content.visible {
             animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        /* Contact Info Cards Animation */
-        .contact-info-animate {
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .contact-info-animate.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
         }
 
         /* Floating Elements Animation */
@@ -740,6 +577,156 @@
 
         .pulse-animation {
             animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 1rem;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+            margin: auto;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0F172A;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6B7280;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #2563EB;
+        }
+        
+        .modal-body {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .modal-footer button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .modal-footer button.cancel {
+            background-color: #F3F4F6;
+            color: #374151;
+        }
+        
+        .modal-footer button.cancel:hover {
+            background-color: #E5E7EB;
+        }
+        
+        .modal-footer button.submit {
+            background-color: #2563EB;
+            color: white;
+        }
+        
+        .modal-footer button.submit:hover {
+            background-color: #1D4ED8;
+        }
+        
+        @media (max-width: 640px) {
+            .modal-content {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .modal-header h2 {
+                font-size: 1.25rem;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.5rem;
+            }
+            .modal-footer {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .modal-footer button {
+                width: 100%;
+            }
         }
     </style>
     <style>
@@ -798,58 +785,64 @@
 </head>
 
 <body class="font-poppins bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
-                        <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
-                        <div class="hidden lg:block">
-                                <span class="text-2xl font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
-                            </div>                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-2 lg:space-x-3 ml-4 lg:ml-20">
-                    <a href="index.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Home</a>
-                    <a href="about.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">About</a>
-                    <a href="services.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Services</a>
-                    <a href="doctors.html" class="text-gray-700 hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Doctors</a>
-                    <a href="contact.html" class="text-primary font-medium text-sm lg:text-base">Contact</a>
-                    <a class="bg-primary text-white px-3 lg:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl book-appointment text-sm lg:text-base whitespace-nowrap" onclick="openAppointmentModal(); return false;">Book Appointment</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-toggle" class="text-gray-700 hover:text-primary focus:outline-none">
+     <!-- Navigation -->
+        <nav id="navbar" class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex items-center">
+                        <a href="index.html" class="flex items-center">
+                            <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
+                            <div class="flex flex-col">
+                                <div class="hidden lg:block">
+                                    <span class="text-2xl font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                                </div>
+                                <div class="lg:hidden">
+                                    <span class="text-sm sm:text-base md:text-lg font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S</span>
+                                    <span class="text-sm sm:text-base md:text-lg font-bold text-primary  block text-center">CLINIC</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-2 lg:space-x-3 ml-4 lg:ml-20">
+                        <a href="index.html" class="hover:text-primary font-medium text-sm lg:text-base">Home</a>
+                        <a href="about.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">About</a>
+                        <a href="services.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Services</a>
+                        <a href="doctors.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Doctors</a>
+                        <a href="contact.html" class="hover:text-primary transition duration-300 font-medium text-sm lg:text-base">Contact</a>
+                        <a class="bg-primary  px-3 lg:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl book-appointment text-sm lg:text-base whitespace-nowrap">Book Appointment</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button id="mobile-menu-toggle" class="text-gray-700 hover:text-primary focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
-                </div>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/40 hidden">
-            <div class="bg-white w-4/5 max-w-xs h-full shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col space-y-4 sm:space-y-6 absolute right-0 top-0 animate-slideIn">
-                <div>
-                    <div>
-                        <a href="index.html" class="flex items-center">
-                            <img src="img/logo2.png" alt="Clinic Logo" class="h-10 sm:h-12 w-auto mr-2" />
-                            <span class="text-base sm:text-lg font-bold text-primary">CHANSE CLINIC</span>
-                        </a>
-                        <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-400 hover:text-logoGreen text-2xl focus:outline-none">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        <nav class="flex flex-col gap-3 sm:gap-4 mt-4">
-                            <a href="index.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Home</a>
-                            <a href="services.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Services</a>
-                            <a href="doctors.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Doctors</a>
-                            <a href="about.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">About</a>
-                            <a href="contact.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Contact</a>
-                        </nav>
-                        <a class="bg-primary text-white px-4 sm:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl mt-4 book-appointment text-sm sm:text-base block text-center">Book Appointment</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
-
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="fixed inset-0 z-[60] bg-black/40 hidden">
+                <div class="bg-white w-[75%] sm:w-[60%] h-full shadow-2xl p-4 sm:p-6 md:p-8 flex flex-col space-y-4 sm:space-y-6 absolute right-0 top-0 animate-slideIn">
+                    <div>
+                        <div>
+                            <a href="index.html" class="flex items-center">
+                                <img src="img/logo2.png" alt="Clinic Logo" class="h-10 sm:h-12 w-auto mr-2" />
+                                <span class="text-base sm:text-lg font-bold text-primary">CHANSE CLINIC</span>
+                            </a>
+                            <button id="mobile-menu-close" class="absolute top-4 right-4 text-gray-400 hover:text-logoGreen text-2xl focus:outline-none">
+                            <i class="fas fa-times"></i>
+                        </button>
+                            <nav class="flex flex-col gap-3 sm:gap-4 mt-4">
+                                <a href="index.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Home</a>
+                                <a href="services.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Services</a>
+                                <a href="doctors.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Doctors</a>
+                                <a href="about.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">About</a>
+                                <a href="contact.html" class="bg-logoGreen text-white font-semibold text-base sm:text-lg py-2 px-2 rounded hover:bg-primary transition">Contact</a>
+                            </nav>
+                            <a class="bg-primary text-white px-4 sm:px-6 py-2 rounded-full hover:bg-logoGreen transition duration-300 shadow-lg hover:shadow-xl mt-4 book-appointment text-sm sm:text-base block text-center">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
     <!-- Page Header -->
     <section class="pt-32 pb-20 hero-pattern">
         <div class="max-w-7xl mx-auto px-4">
@@ -864,7 +857,7 @@
     <section class="py-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="contact-card contact-info-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-100">
+                <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll bounce-in animate-delay-100">
                     <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                         <i class="fas fa-map-marker-alt text-logoGreen text-2xl"></i>
                     </div>
@@ -873,7 +866,7 @@
                         <p class="text-gray-600" id="dynamic-address">Entebbe Kampala - Entebbe Road, Namulanda<br>Next to Kisubi Schools</p>
                     </div>
                 </div>
-                <div class="contact-card contact-info-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-200">
+                <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll bounce-in animate-delay-200">
                     <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                         <i class="fas fa-phone-alt text-logoGreen text-2xl"></i>
                     </div>
@@ -882,7 +875,7 @@
                         <p class="text-gray-600" id="dynamic-phone">Main: (+256) 759130250<br>Emergency: 0759130250<br>Appointments: (+256) 759130250</p>
                     </div>
                 </div>
-                <div class="contact-card contact-info-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-300">
+                <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll bounce-in animate-delay-300">
                     <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                         <i class="fas fa-clock text-logoGreen text-2xl"></i>
                     </div>
@@ -899,9 +892,9 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12">
-                <div class="form-animate animate-on-scroll fade-left">
+                <div class="form-section-animate animate-on-scroll fade-left">
                     <h2 class="text-3xl font-bold mb-6 section-title-animate animate-on-scroll fade-up">Send us a <span class="gradient-text">Message</span></h2>
-                    <form id="contact-form" class="space-y-6">
+                    <form id="contact-form" class="space-y-6 animate-on-scroll fade-up animate-delay-200">
                         <input type="hidden" name="csrf_token" id="csrf_token" value="">
 
                         <!-- Honeypot Fields (Hidden from users, visible to bots) -->
@@ -948,7 +941,7 @@
                     </form>
                 </div>
                 <div class="animate-on-scroll fade-right">
-                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll bounce-in animate-delay-100">
+                    <div class="contact-card bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-100">
                         <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                             <i class="fas fa-clock text-logoGreen text-2xl"></i>
                         </div>
@@ -957,7 +950,7 @@
                             <p class="text-gray-600" id="dynamic-business-hours">Monday - Sunday: 24/7</p>
                         </div>
                     </div>
-                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll bounce-in animate-delay-200">
+                    <div class="contact-card bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll fade-up animate-delay-200">
                         <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                             <i class="fas fa-map-marker-alt text-logoGreen text-2xl"></i>
                         </div>
@@ -966,7 +959,7 @@
                             <p class="text-gray-600" id="dynamic-address">Entebbe Kampala - Entebbe Road, Namulanda</p>
                         </div>
                     </div>
-                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll bounce-in animate-delay-300">
+                    <div class="contact-card bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll fade-up animate-delay-300">
                         <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                             <i class="fas fa-phone text-logoGreen text-2xl"></i>
                         </div>
@@ -975,7 +968,7 @@
                             <p class="text-gray-600" id="dynamic-phone">(+256) 759130250</p>
                         </div>
                     </div>
-                    <div class="contact-card contact-card-animate bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll bounce-in animate-delay-400">
+                    <div class="contact-card bg-white p-8 rounded-2xl shadow-xl mt-8 animate-on-scroll fade-up animate-delay-400">
                         <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 contact-icon">
                             <i class="fas fa-envelope text-logoGreen text-2xl"></i>
                         </div>
@@ -996,12 +989,12 @@
                 <h2 class="text-3xl font-bold mb-4 section-title-animate animate-on-scroll fade-up">Find Us on the <span class="gradient-text">Map</span></h2>
                 <p class="text-gray-600 max-w-2xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">Visit our clinic located along Entebbe Kampala - Entebbe Road, Namulanda next to Kisubi Schools. We're easily accessible and provide ample parking for our patients.</p>
             </div>
-            <div class="map-container map-animate animate-on-scroll fade-scale">
+            <div class="map-container map-section-animate animate-on-scroll fade-scale animate-delay-300">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8037829358536!2d32.54382857507038!3d0.15466949984382872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa402688c78fa48cf%3A0x8208d3af97c16221!2sCHANSE%20PHYSICIAN%20AND%20CHILDREN&#39;S%20CLINIC!5e0!3m2!1sen!2sug!4v1750792611951!5m2!1sen!2sug"
                     width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="mt-8 text-center animate-on-scroll fade-up animate-delay-300">
-                <a href="https://maps.app.goo.gl/9ygGopYiGL4zXpTZ7" target="_blank" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-xl hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl pulse-animation">
+            <div class="mt-8 text-center animate-on-scroll fade-up animate-delay-400">
+                <a href="https://maps.app.goo.gl/9ygGopYiGL4zXpTZ7" target="_blank" class="inline-flex items-center px-6 py-3 bg-primary text-white rounded-xl hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl">
                     <i class="fas fa-directions mr-2"></i> Get Directions
                 </a>
             </div>
@@ -1101,16 +1094,12 @@
                     </div>
                     <div class="form-group">
                         <label for="service">Service</label>
-                        <select id="service" name="service_type" class="form-control">
+                        <select id="service" name="service" class="form-control">
                             <option value="">Select a service</option>
-                            <option value="General Consultation">Cardiology</option>
-                            <option value="Pediatric Care">Pediatrics</option>
-                            <option value="Emergency Care">Emergency Care</option>
-                            <option value="Vaccination">Immunization</option>
-                            <option value="Laboratory Tests">Laboratory</option>
-                            <option value="Prenatal Care">General Medicine</option>
-                            <option value="Family Planning">Maternity</option>
-                            <option value="Chronic Disease Management">Gynacology</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="dental">Dental Care</option>
+                            <option value="emergency">Emergency Care</option>
                         </select>
                         <span class="error-message text-red-500 text-sm hidden"></span>
                     </div>
@@ -1640,44 +1629,29 @@
                     }
                 });
 
-            // --- SCROLL ANIMATIONS ---
-            // Intersection Observer for scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
+            // ===== UNIVERSAL SCROLL-TRIGGERED ANIMATIONS =====
+            
+            // Create Intersection Observer for scroll animations
+            const animationObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        // Don't unobserve to allow re-triggering if needed
+                        // Optional: Stop observing after animation triggers
+                        animationObserver.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
 
             // Observe all elements with animation classes
             const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(el => {
-                observer.observe(el);
+            animatedElements.forEach(element => {
+                animationObserver.observe(element);
             });
 
-            // Initialize animations for elements already in viewport
-            const initializeVisibleAnimations = () => {
-                animatedElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                    if (isVisible) {
-                        el.classList.add('visible');
-                    }
-                });
-            };
-
-            // Run on page load
-            initializeVisibleAnimations();
-
-            // Also run after a short delay to catch any dynamically loaded content
-            setTimeout(initializeVisibleAnimations, 100);
+            console.log('Universal scroll animations initialized for', animatedElements.length, 'elements');
         });
     </script>
 </body>
