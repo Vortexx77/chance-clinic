@@ -42,6 +42,33 @@
   overflow-x: hidden;
 }
 
+.learn-more-btn {
+    background: linear-gradient(90deg, #22C55E 0%, #2563EB 100%);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.10);
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.learn-more-btn:hover, .learn-more-btn:focus {
+    background: linear-gradient(90deg, #2563EB 0%, #22C55E 100%);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.18);
+    text-decoration: none;
+}
+
+.learn-more-btn i {
+    transition: transform 0.3s;
+}
+
+.learn-more-btn:hover i {
+    transform: translateX(6px) scale(1.1);
+}
+
         .hero-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
@@ -1310,8 +1337,8 @@
                     <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 relative z-10">
                         <i class="fas fa-clock text-logoGreen text-xl"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2 relative z-10">24/7 Service</h3>
-                    <p class="text-gray-600 text-sm relative z-10">Round-the-clock medical care, emergency services and physician consultations.</p>
+                    <h3 class="font-bold text-lg mb-2 relative z-10">Pediatrics</h3>
+                    <p class="text-gray-600 text-sm relative z-10">Specialized, compassionate care for children from newborns to adolescents, focusing on growth, development, and wellness.</p>
                 </div>
                 <div class="why-card why-animate bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 relative">
                     <div class="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 relative z-10">
@@ -1353,14 +1380,14 @@
                         <i class="fas fa-check text-primary mr-2"></i> General Health Check-ups
                     </li>
                     <li class="flex items-center text-gray-600">
-                        <i class="fas fa-check text-primary mr-2"></i> Diagnosis & Treatment of Common Illnesses
+                        <i class="fas fa-check text-primary mr-2"></i> Specialist in hypertension and diabetic care
                     </li>
                     <li class="flex items-center text-gray-600">
                         <i class="fas fa-check text-primary mr-2"></i> Preventive Health Care & Lifestyle Advice
                     </li>
                 </ul>
 
-                    <a href="services.html" class="inline-flex items-center text-primary mt-4 hover:text-blue-700">
+                    <a href="services.html" class="learn-more-btn  inline-flex items-center  mt-4 hover:text-blue-700">
             Learn More
             <i class="fas fa-arrow-right ml-2"></i>
         </a>
@@ -1381,8 +1408,11 @@
                         <li class="flex items-center text-gray-600">
                             <i class="fas fa-check text-primary mr-2"></i> Urine Tests
                         </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fas fa-check text-primary mr-2"></i> Stool Tests
+                        </li>
                     </ul>
-                    <a href="services.html" class="inline-flex items-center text-primary mt-4 hover:text-blue-700">
+                    <a href="services.html" class="learn-more-btn inline-flex items-center mt-4 hover:text-blue-700">
             Learn More
             <i class="fas fa-arrow-right ml-2"></i>
         </a>
@@ -1404,7 +1434,7 @@
                             <i class="fas fa-check text-primary mr-2"></i> Nutrition and Feeding Guidance
                         </li>
                     </ul>
-                    <a href="services.html" class="inline-flex items-center text-primary mt-4 hover:text-blue-700">
+                    <a href="services.html" class="learn-more-btn inline-flex items-center mt-4 hover:text-blue-700">
             Learn More
             <i class="fas fa-arrow-right ml-2"></i>
         </a>
@@ -1439,7 +1469,6 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-xl text-dark">Ronny Adams</h4>
-                                            <p class="text-primary font-medium text-lg">Cardiac Patient</p>
                                             <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
                                                 <i class="fas fa-star text-lg"></i>
                                                 <i class="fas fa-star text-lg"></i>
@@ -1470,7 +1499,6 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-xl text-dark">Kamugisha Collin</h4>
-                                            <p class="text-primary font-medium text-lg">Neurology Patient</p>
                                             <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
                                                 <i class="fas fa-star text-lg"></i>
                                                 <i class="fas fa-star text-lg"></i>
@@ -1482,7 +1510,7 @@
                                     </div>
                                     <div class="mb-8 text-center">
                                         <i class="fas fa-quote-left text-4xl text-primary/30 mb-6 block"></i>
-                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"The neurology department's expertise and the clinic's advanced technology made my treatment successful. The personalized care approach exceeded my expectations, and I'm grateful for the comprehensive support throughout
+                                        <p class="text-gray-700 text-xl leading-relaxed max-w-3xl mx-auto">"The clinic's advanced technology made my treatment successful. The personalized care approach exceeded my expectations, and I'm grateful for the comprehensive support throughout
                                             my journey."</p>
                                         <i class="fas fa-quote-right text-3xl text-logoGreen/40 mt-6 block"></i>
                                     </div>
@@ -1501,7 +1529,6 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-xl text-dark">Mukasa Godfrey</h4>
-                                            <p class="text-primary font-medium text-lg">Pediatric Care</p>
                                             <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
                                                 <i class="fas fa-star text-lg"></i>
                                                 <i class="fas fa-star text-lg"></i>
@@ -1531,7 +1558,6 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-xl text-dark">David Okello</h4>
-                                            <p class="text-primary font-medium text-lg">Emergency Care</p>
                                             <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
                                                 <i class="fas fa-star text-lg"></i>
                                                 <i class="fas fa-star text-lg"></i>
@@ -1561,7 +1587,6 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-xl text-dark">Lisa Marinya</h4>
-                                            <p class="text-primary font-medium text-lg">Maternity Care</p>
                                             <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
                                                 <i class="fas fa-star text-lg"></i>
                                                 <i class="fas fa-star text-lg"></i>
@@ -1591,7 +1616,6 @@
                                         </div>
                                         <div>
                                             <h4 class="font-bold text-xl text-dark">Robert Mugabe</h4>
-                                            <p class="text-primary font-medium text-lg">General Medicine</p>
                                             <div class="flex text-yellow-400 mt-2 justify-center md:justify-start">
                                                 <i class="fas fa-star text-lg"></i>
                                                 <i class="fas fa-star text-lg"></i>
@@ -1696,7 +1720,7 @@
                         <div class="text-sm text-gray-500 mb-2">April 15, 2025</div>
                         <h3 class="text-xl font-bold mb-2">New Care Unit Opening</h3>
                         <p class="text-gray-600 mb-4">We're expanding our cardiac care facilities with state-of-the-art equipment and specialized staff.</p>
-                        <a href="#" class="text-primary hover:text-blue-700">Read More →</a>
+                        <a href="#" class="learn-more-btn  hover:text-blue-700">Read More →</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover news-card animate-on-scroll fade-up animate-delay-200">
@@ -1705,16 +1729,16 @@
                         <div class="text-sm text-gray-500 mb-2">April 10, 2025</div>
                         <h3 class="text-xl font-bold mb-2">Children's Immunisation </h3>
                         <p class="text-gray-600 mb-4">Latest information about our immunisation program and safety protocols.</p>
-                        <a href="#" class="text-primary hover:text-blue-700">Read More →</a>
+                        <a href="#" class="learn-more-btn hover:text-blue-700">Read More →</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover news-card animate-on-scroll fade-up animate-delay-300">
                     <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="News" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="text-sm text-gray-500 mb-2">April 5, 2025</div>
-                        <h3 class="text-xl font-bold mb-2">Medical Research Breakthrough</h3>
-                        <p class="text-gray-600 mb-4">Our research team makes significant progress in neurological treatments.</p>
-                        <a href="#" class="text-primary hover:text-blue-700">Read More →</a>
+                        <h3 class="text-xl font-bold mb-2">Cardiology Services at Chanse Clinic</h3>
+                        <p class="text-gray-600 mb-4">Our cardiology department offers expert heart care, including ECG, ECHO, hypertension management, and personalized treatment plans for all cardiac conditions.</p>
+                        <a href="#" class="learn-more-btn hover:text-blue-700">Read More →</a>
                     </div>
                 </div>
             </div>
@@ -2882,11 +2906,5 @@
         });
     </script>
 </body>
-
-</html>
-
-</html>
-
-</html>
 
 </html>
