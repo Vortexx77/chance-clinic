@@ -7,6 +7,20 @@
     <!-- Favicon -->
     <link href="img/logo2.png" rel="icon">
     <title id="site-title">Contact Us - CHANSE CLINIC</title>
+    <meta name="description" content="Contact Chanse Clinic for appointments, inquiries, or feedback. Find our location, phone number, and working hours.">
+    <meta name="keywords" content="contact us, appointments, location, phone number, Chanse Clinic">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chansepc.com/contact.html">
+    <meta property="og:title" content="Contact Us - CHANSE CLINIC">
+    <meta property="og:description" content="Contact Chanse Clinic for appointments, inquiries, or feedback. Find our location, phone number, and working hours.">
+    <meta property="og:image" content="https://chansepc.com/img/logo2.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://chansepc.com/contact.html">
+    <meta property="twitter:title" content="Contact Us - CHANSE CLINIC">
+    <meta property="twitter:description" content="Contact Chanse Clinic for appointments, inquiries, or feedback. Find our location, phone number, and working hours.">
+    <meta property="twitter:image" content="https://chansepc.com/img/logo2.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -794,7 +808,7 @@
                             <img src="img/logo2.png" alt="Clinic Logo" class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto mr-2 sm:mr-4 md:mr-6 lg:mr-8" />
                             <div class="flex flex-col">
                                 <div class="hidden lg:block">
-                                    <span class="text-2xl font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S CLINIC</span>
+                                    <span class="text-2xl font-bold text-primary">CHANSEPHYSICIAN & CHILDREN'S CLINIC</span>
                                 </div>
                                 <div class="lg:hidden">
                                     <span class="text-sm sm:text-base md:text-lg font-bold text-primary">CHANSE PHYSICIAN & CHILDREN'S</span>
@@ -1042,8 +1056,12 @@
                     <div id="newsletter-message" class="mt-2 text-sm hidden"></div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 animate-on-scroll fade-up animate-delay-500">
-                <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <span>&copy; 2025 CHANSE CLINIC. All rights reserved.</span>
+                <span class="mx-2">|</span>
+                <a href="https://thevortexx.com" class="hover:text-green transition duration-300">
+                    Designed & Developed by Vortexx
+                </a>
             </div>
         </div>
     </footer>
@@ -1096,10 +1114,16 @@
                         <label for="service">Service</label>
                         <select id="service" name="service" class="form-control">
                             <option value="">Select a service</option>
-                            <option value="cardiology">Cardiology</option>
-                            <option value="neurology">Neurology</option>
-                            <option value="dental">Dental Care</option>
-                            <option value="emergency">Emergency Care</option>
+                            <option value="General Consultation">General Consultation</option>
+                            <option value="Pediatric Care">Pediatric Care</option>
+                            <option value="Emergency Care">Physician</option>
+                            <option value="Vaccination">Vaccination</option>
+                            <option value="Laboratory Tests">Laboratory Tests</option>
+                            <option value="Prenatal Care">Prenatal Care</option>
+                            <option value="Family Planning">Family Planning</option>
+                            <option value="Laboratory">Labaratory</option>
+                            <option value="ECG & ECHO">ECG & ECHO</option>
+                            <option value="SCAN">SCAN</option>
                         </select>
                         <span class="error-message text-red-500 text-sm hidden"></span>
                     </div>
@@ -1183,22 +1207,12 @@
         // --- GLOBAL NOTIFICATION FUNCTION ---
         function showNotification(type, message) {
             $('.notification').remove();
-            const notification = $(`
-                <div class="notification ${type}" style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    padding: 15px 20px;
-                    border-radius: 5px;
-                    color: white;
-                    font-weight: 500;
-                    z-index: 10000;
-                    max-width: 400px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    ${type === 'success' ? 'background-color: #10b981;' : ''}
+            const notification = $(
+                `<div class=\"notification ${type}\" style=
+                    \"position: fixed;\n                    top: 20px;\n                    right: 20px;\n                    padding: 15px 20px;\n                    border-radius: 5px;\n                    color: white;\n                    font-weight: 500;\n                    z-index: 10000;\n                    max-width: 400px;\n                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n                    ${type === 'success' ? 'background-color: #10b981;' : ''}
                     ${type === 'error' ? 'background-color: #ef4444;' : ''}
                     ${type === 'info' ? 'background-color: #3b82f6;' : ''}
-                ">
+                \">
                     ${message}
                 </div>
             `);
@@ -1236,7 +1250,7 @@
         }
 
         function isValidEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            return /^[^\\s@]+@[^\\s@]+\\[^\\s@]+$/.test(email);
         }
 
         $(document).ready(function() {
@@ -1283,7 +1297,7 @@
                 },
                 phone: {
                     required: true,
-                    pattern: /^[0-9+\-\s()]{10,}$/,
+                    pattern: /^[0-9+\\-\\s()]{10,}$/,
                     message: 'Please enter a valid phone number'
                 },
                 date: {

@@ -13,15 +13,15 @@ const CHANSE_CONFIG = {
     // Backend URLs - CHANGE THESE TO YOUR ACTUAL SERVER!
     BACKEND_URL: {
         local: 'http://localhost/chanse-clinic/backend/',
-        production: 'https://your-clinic-server.com/backend/', // CHANGE THIS!
-        clinic: 'https://your-clinic-server.com/backend/' // CHANGE THIS!
+        production: 'https://www.chanseclinic.com/backend/', // CHANGE THIS!
+        clinic: 'https://www.chanseclinic.com/backend/' // CHANGE THIS!
     },
 
     // Frontend URLs
     FRONTEND_URL: {
         local: 'http://localhost/chanse-clinic/',
-        production: 'https://chanseclinic.com/', // CHANGE TO YOUR DOMAIN
-        clinic: 'https://chanseclinic.com/' // CHANGE TO YOUR DOMAIN
+        production: 'https://www.chanseclinic.com/', // CHANGE TO YOUR DOMAIN
+        clinic: 'https://www.chanseclinic.com/' // CHANGE TO YOUR DOMAIN
     },
 
     // API Endpoints
@@ -39,7 +39,7 @@ const CHANSE_CONFIG = {
         phone: '+256 XXX XXX XXX', // CHANGE TO REAL PHONE
         email: 'info@chanseclinic.com', // CHANGE TO REAL EMAIL
         address: 'Namulanda, Entebbe, Uganda',
-        website: 'https://chanseclinic.com' // CHANGE TO YOUR DOMAIN
+        website: 'https://chansepc.com // CHANGE TO YOUR DOMAIN
     },
 
     // Form Settings

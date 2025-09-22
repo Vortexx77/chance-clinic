@@ -1,0 +1,21 @@
+# Enable URL Rewriting
+RewriteEngine On
+
+# Rule to redirect http to https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Rule for dashboard
+RewriteRule ^dashboard/?$ backend/admin/dashboard.php [NC,L]
+
+# Rule for login
+RewriteRule ^login/?$ backend/admin/login.php [NC,L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

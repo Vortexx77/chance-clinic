@@ -7,6 +7,20 @@
     <!-- Favicon -->
     <link href="img/logo2.png" rel="icon">
     <title>About Us - CHANSE CLINIC</title>
+    <meta name="description" content="Learn about the history, mission, and values of Chanse Clinic. We are a Christ-centered clinic providing exceptional physician consultations, gynecology, and children's care services since 2019.">
+    <meta name="keywords" content="about us, clinic history, mission, values, Chanse Clinic, healthcare">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chansepc.com/about.html">
+    <meta property="og:title" content="About Us - CHANSE CLINIC">
+    <meta property="og:description" content="Learn about the history, mission, and values of Chanse Clinic. We are a Christ-centered clinic providing exceptional physician consultations, gynecology, and children's care services since 2019.">
+    <meta property="og:image" content="https://chansepc.com/img/logo2.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://chansepc.com/about.html">
+    <meta property="twitter:title" content="About Us - CHANSE CLINIC">
+    <meta property="twitter:description" content="Learn about the history, mission, and values of Chanse Clinic. We are a Christ-centered clinic providing exceptional physician consultations, gynecology, and children's care services since 2019.">
+    <meta property="twitter:image" content="https://chansepc.com/img/logo2.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -969,20 +983,27 @@
                 <p class="text-gray-600 max-w-3xl mx-auto section-subtitle-animate animate-on-scroll fade-up animate-delay-200">We are committed to providing exceptional healthcare services while upholding our core values of compassion, excellence, and innovation.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
+                <!-- Mission Statement Card -->
                 <div class="value-card value-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-100">
                     <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 value-icon">
-                        <i class="fas fa-heart text-logoGreen text-2xl"></i>
+                        <i class="fas fa-bullseye text-logoGreen text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Compassion</h3>
-                    <p class="text-gray-600">We treat every patient with empathy and understanding, providing care that goes beyond medical treatment.</p>
+                    <h3 class="text-xl font-bold mb-4">Mission</h3>
+                    <p class="text-gray-600">
+                        To provide timely and high-quality medical services at an affordable cost to contribute to the overall well-being and a reduction of morbidity and mortality in Uganda.
+                    </p>
                 </div>
+                <!-- Vision Statement Card -->
                 <div class="value-card value-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-200">
                     <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 value-icon">
-                        <i class="fas fa-award text-logoGreen text-2xl"></i>
+                        <i class="fas fa-eye text-logoGreen text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Excellence</h3>
-                    <p class="text-gray-600">We strive for the highest standards in medical care, continuously improving our services and outcomes.</p>
+                    <h3 class="text-xl font-bold mb-4">Vision</h3>
+                    <p class="text-gray-600">
+                        To be a leading provider of accessible, high-quality healthcare in Uganda, recognized for significantly improving community well-being and pioneering a future with reduced morbidity and mortality rates.
+                    </p>
                 </div>
+                <!-- Integrity Card (unchanged) -->
                 <div class="value-card value-card-animate bg-white p-8 rounded-2xl shadow-xl animate-on-scroll fade-up animate-delay-300">
                     <div class="bg-primary/10 p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6 value-icon">
                         <i class="fas fa-lightbulb text-logoGreen text-2xl"></i>
@@ -1082,7 +1103,11 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
+                <span>&copy; 2025 CHANSE CLINIC. All rights reserved.</span>
+                <span class="mx-2">|</span>
+                <a href="https://thevortexx.com" class="hover:text-green transition duration-300">
+                    Designed & Developed by Vortexx
+                </a>
             </div>
         </div>
     </footer>
@@ -1135,14 +1160,16 @@
                         <label for="service">Service</label>
                         <select id="service" name="service_type" class="form-control">
                             <option value="">Select a service</option>
-                            <option value="General Consultation">Cardiology</option>
-                            <option value="Pediatric Care">Pediatrics</option>
-                            <option value="Emergency Care">Emergency Care</option>
-                            <option value="Vaccination">Immunization</option>
-                            <option value="Laboratory Tests">Laboratory</option>
-                            <option value="Prenatal Care">General Medicine</option>
-                            <option value="Family Planning">Maternity</option>
-                            <option value="Chronic Disease Management">Gynacology</option>
+                            <option value="General Consultation">General Consultation</option>
+                            <option value="Pediatric Care">Pediatric Care</option>
+                            <option value="Emergency Care">Physician</option>
+                            <option value="Vaccination">Vaccination</option>
+                            <option value="Laboratory Tests">Laboratory Tests</option>
+                            <option value="Prenatal Care">Prenatal Care</option>
+                            <option value="Family Planning">Family Planning</option>
+                            <option value="Laboratory">Labaratory</option>
+                            <option value="ECG & ECHO">ECG & ECHO</option>
+                            <option value="SCAN">SCAN</option>
                         </select>
                         <span class="error-message text-red-500 text-sm hidden"></span>
                     </div>

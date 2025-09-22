@@ -6,6 +6,20 @@
     <!-- Favicon -->
     <link href="img/logo2.png" rel="icon" />
     <title>Our Services - CHANSE CLINIC</title>
+    <meta name="description" content="Explore the comprehensive medical services offered at Chanse Clinic, including physician consultations, laboratory services, pediatrics, and more.">
+    <meta name="keywords" content="services, medical services, physician, laboratory, pediatrics, Chanse Clinic">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chansepc.com/services.html">
+    <meta property="og:title" content="Our Services - CHANSE CLINIC">
+    <meta property="og:description" content="Explore the comprehensive medical services offered at Chanse Clinic, including physician consultations, laboratory services, and more.">
+    <meta property="og:image" content="https://chansepc.com/img/logo2.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://chansepc.com/services.html">
+    <meta property="twitter:title" content="Our Services - CHANSE CLINIC">
+    <meta property="twitter:description" content="Explore the comprehensive medical services offered at Chanse Clinic, including physician consultations, laboratory services, and more.">
+    <meta property="twitter:image" content="https://chansepc.com/img/logo2.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -1182,7 +1196,7 @@
                 <div
                   class="bg-primary/10 p-3 rounded-xl w-12 h-12 flex items-center justify-center mb-4 service-icon"
                 >
-                  <i class="fas fa-stethoscope text-logoGreen text-xl"></i>
+                  <i class="fas fa- stethoscope text-logoGreen text-xl"></i>
                 </div>
                 <h3 class="text-xl font-bold mb-2">General Medicine</h3>
                 <p class="text-gray-600 mb-4">
@@ -1423,11 +1437,13 @@
             <div id="newsletter-message" class="mt-2 text-sm hidden"></div>
           </div>
         </div>
-        <div
-          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
-        >
-          <p>&copy; 2025 CHANSE CLINIC. All rights reserved.</p>
-        </div>
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <span>&copy; 2025 CHANSE CLINIC. All rights reserved.</span>
+                <span class="mx-2">|</span>
+                <a href="https://thevortexx.com" class="hover:text-green transition duration-300">
+                    Designed & Developed by Vortexx
+                </a>
+            </div>
       </div>
     </footer>
 
@@ -1489,10 +1505,16 @@
               <label for="service">Service</label>
               <select id="service" name="service" class="form-control">
                 <option value="">Select a service</option>
-                <option value="cardiology">Cardiology</option>
-                <option value="neurology">Neurology</option>
-                <option value="dental">Dental Care</option>
-                <option value="emergency">Emergency Care</option>
+                <option value="General Consultation">General Consultation</option>
+                      <option value="Pediatric Care">Pediatric Care</option>
+                      <option value="Emergency Care">Physician</option>
+                      <option value="Vaccination">Vaccination</option>
+                      <option value="Laboratory Tests">Laboratory Tests</option>
+                      <option value="Prenatal Care">Prenatal Care</option>
+                      <option value="Family Planning">Family Planning</option>
+                      <option value="Laboratory">Labaratory</option>
+                      <option value="ECG & ECHO">ECG & ECHO</option>
+                      <option value="SCAN">SCAN</option>
               </select>
               <span class="error-message text-red-500 text-sm hidden"></span>
             </div>
@@ -1536,25 +1558,9 @@
         // Remove existing notifications
         $(".notification").remove();
 
-        const notification = $(`
-                <div class="notification ${type}" style="
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    padding: 15px 20px;
-                    border-radius: 5px;
-                    color: white;
-                    font-weight: 500;
-                    z-index: 10000;
-                    max-width: 400px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                    ${type === "success" ? "background-color: #10b981;" : ""}
-                    ${type === "error" ? "background-color: #ef4444;" : ""}
-                    ${type === "info" ? "background-color: #3b82f6;" : ""}
-                ">
-                    ${message}
-                </div>
-            `);
+        const notification = $(
+          `<div class="notification ${type}" style="position: fixed; top: 20px; right: 20px; padding: 15px 20px; border-radius: 5px; color: white; font-weight: 500; z-index: 10000; max-width: 400px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); ${type === "success" ? "background-color: #10b981;" : ""} ${type === "error" ? "background-color: #ef4444;" : ""} ${type === "info" ? "background-color: #3b82f6;" : ""}">${message}</div>`
+        );
 
         $("body").append(notification);
 
@@ -1844,7 +1850,7 @@
         // Newsletter form validation
         $("#newsletter-form").on("submit", function (e) {
           e.preventDefault();
-          const emailField = $(this).find('input[name="email"]');
+          const emailField = $(this).find("input[name='email']");
           const messageDiv = $(this).siblings("#newsletter-message");
           const email = emailField.val().trim();
 
@@ -1864,10 +1870,10 @@
             return false;
           }
 
-          const submitBtn = $(this).find('button[type="submit"]');
+          const submitBtn = $(this).find("button[type='submit']");
           const originalText = submitBtn.html();
           submitBtn
-            .html('<i class="fas fa-spinner fa-spin"></i>')
+            .html("<i class='fas fa-spinner fa-spin'></i>")
             .prop("disabled", true);
 
           fetch("backend/routes/newsletter.php", {
